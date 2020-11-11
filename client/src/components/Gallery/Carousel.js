@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Carousel = (props) => {
-  return <div>CAROUSEL</div>;
+  return (
+    <div style={{ backgroundColor: 'orange', height: '500px' }}>CAROUSEL</div>
+  );
 };
 
 Carousel.propTypes = {};

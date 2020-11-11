@@ -2,7 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ProductInfo = (props) => {
-  return <div>ProductInfo</div>;
+  return (
+    <div
+      style={{ backgroundColor: 'yellow', minHeight: '250px' }}
+      className='mt-2'>
+      ProductInfo
+    </div>
+  );
 };
 
 ProductInfo.propTypes = {};
