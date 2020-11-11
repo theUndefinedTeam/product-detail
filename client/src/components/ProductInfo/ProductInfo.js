@@ -5,7 +5,7 @@ const ProductInfo = (props) => {
   return (
     <div
       style={{ backgroundColor: 'yellow', minHeight: '250px' }}
-      className='mt-2'>
+      className='mt-3'>
       ProductInfo
     </div>
   );
