@@ -8,10 +8,7 @@
   },
   "scripts": {
     "test": "jest",
-    "build": "webpack --mode production",
-    "react-dev": "webpack -d --watch",
-    "start": "live-server ./dist",
-    "web-dev": "concurrently \"npm run react-dev\" \"npm run start\"",
+    "start": "process.env.NODE_ENV === 'production' parcel ./index.html",
     "dev": "parcel ./index.html"
   },
   "keywords": [],
@@ -41,6 +38,9 @@
     "@babel/core": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.12",
     "@popperjs/core": "^2.5.4",
     "axios": "^0.21.0",
     "babel-loader": "^8.0.6",

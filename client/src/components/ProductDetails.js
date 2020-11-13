@@ -5,13 +5,13 @@ import CarouselContainer from './Gallery/CarouselContainer';
 import ProductPurchasePanel from './ProductSelect/ProductPurchasePanel';
 import ProductInfo from './ProductInfo/ProductInfo';
 import ThumbnailGallery from './Gallery/ThumbnailGallery';
+import imageUrls from '../urlData/urls';
 
 const ProductDetails = ({
   match: {
     params: { id },
   },
 }) => {
-  //PUUUUUNK
   const [productInfo, setProductInfo] = useState([]);
   const [styleInfo, setStyleInfo] = useState(null);
   const [reviewMeta, setReviewMeta] = useState([]);
@@ -46,9 +46,11 @@ const ProductDetails = ({
               <CarouselContainer
                 currentStyleIdx={currentStyleIdx}
                 styles={styleInfo.results}
+                imageUrls={imageUrls}
               />
               <ThumbnailGallery
                 styles={styleInfo.results}
+                imageUrls={imageUrls}
                 currentStyleIdx={currentStyleIdx}
                 setCurrentStyleIdx={setCurrentStyleIdx}
               />
