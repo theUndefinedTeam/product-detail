@@ -23,52 +23,51 @@ const ThumbnailGallery = ({
   }, [currentMin, currentMax]);
 
   return (
-    <>
-      <div
-        style={{
-          height: '100px',
-          position: 'relative',
-          // marginTop: '-150px',
-          display: 'flex',
-          alignContent: 'space-between',
-          alignItems: 'center',
-          // left: '25%',
-        }}>
-        <FontAwesomeIcon
-          icon={faChevronLeft}
-          style={chevronStyles}
-          onClick={() => {
-            if (currentMin > 0) {
-              setCurrentMax(currentMax - 1);
-              setCurrentMin(currentMin - 1);
-            }
-          }}
-        />
-        {currentStylePics.map((style, i) => {
-          console.log('rendering');
-          console.log(i === 1 && imageUrls[i].thumbnail_url);
-          return (
-            <ThumbnailImage
-              key={styles[i].style_id}
-              image={currentStylePics[i].thumbnail_url}
-              imgIdx={i + currentMin}
-              thumbNailIdx={i}
-              currentStyleIdx={currentStyleIdx}
-              setCurrentStyleIdx={setCurrentStyleIdx}
-            />
-          );
-        })}
-        <FontAwesomeIcon
-          icon={faChevronRight}
-          onClick={() => {
-            if (currentMax + 1 < imageUrls.length) {
-              setCurrentMax(currentMax + 1);
-              setCurrentMin(currentMin + 1);
-            }
-          }}
-        />
-      </div>
-    </>
+    <div
+      style={{
+        height: '100px',
+        position: 'relative',
+        // marginTop: '-150px',
+        display: 'flex',
+        alignContent: 'space-between',
+        alignItems: 'center',
+        // left: '25%',
+      }}>
+      <FontAwesomeIcon
+        icon={faChevronLeft}
+        style={chevronStyles}
+        onClick={() => {
+          if (currentMin > 0) {
+            setCurrentMax(currentMax - 1);
+            setCurrentMin(currentMin - 1);
+          }
+        }}
+      />
+      {currentStylePics.map((style, i) => {
+        console.log('rendering');
+        console.log(i === 1 && imageUrls[i].thumbnail_url);
+        return (
+          <ThumbnailImage
+            key={styles[i + currentMin].style_id}
+            image={currentStylePics[i].thumbnail_url}
+            imgIdx={i + currentMin}
+            thumbNailIdx={i}
+            currentStyleIdx={currentStyleIdx}
+            setCurrentStyleIdx={setCurrentStyleIdx}
+          />
+        );
+      })}
+
+      <FontAwesomeIcon
+        icon={faChevronRight}
+        onClick={() => {
+          if (currentMax + 1 < imageUrls.length) {
+            setCurrentMax(currentMax + 1);
+            setCurrentMin(currentMin + 1);
+          }
+        }}
+      />
+    </div>
   );
 };
 

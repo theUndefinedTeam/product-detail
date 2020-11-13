@@ -47,13 +47,14 @@ const ProductDetails = ({
                 currentStyleIdx={currentStyleIdx}
                 styles={styleInfo.results}
                 imageUrls={imageUrls}
+                setCurrentStyleIdx={setCurrentStyleIdx}
               />
-              <ThumbnailGallery
+              {/* <ThumbnailGallery
                 styles={styleInfo.results}
                 imageUrls={imageUrls}
                 currentStyleIdx={currentStyleIdx}
                 setCurrentStyleIdx={setCurrentStyleIdx}
-              />
+              /> */}
             </Col>
             <Col>
               <ProductPurchasePanel />
