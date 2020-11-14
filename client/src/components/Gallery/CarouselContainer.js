@@ -9,10 +9,15 @@ const CarouselContainer = ({
   setCurrentStyleIdx,
 }) => {
   return (
-    <Col>
-      <Carousel indicators={false} style={carouselStyles}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}>
+      <Carousel controls={false} indicators={false} style={carouselStyles}>
         {styles.map((style) => (
-          <Carousel.Item key={style.style_id} interval={40000}>
+          <Carousel.Item key={style.style_id} interval={4000000}>
             <Image
               className='d-block w-100'
               src={imageUrls[currentStyleIdx].url}
@@ -28,7 +33,7 @@ const CarouselContainer = ({
         setCurrentStyleIdx={setCurrentStyleIdx}
         style={thumbnailGalleryStyles}
       />
-    </Col>
+    </div>
   );
 };
 const carouselStyles = {

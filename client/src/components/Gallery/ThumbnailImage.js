@@ -6,7 +6,6 @@ const ThumbnailImage = ({
   image,
   currentStyleIdx,
   setCurrentStyleIdx,
-  thumbNailIdx,
   imgIdx,
 }) => {
   return (
@@ -23,15 +22,13 @@ const ThumbnailImage = ({
   );
 };
 const styles = {
-  // height: 'auto',
-  maxWidth: '75px',
+  maxWidth: '100px',
   transition: 'all 0.3s',
-  // border: '1px black solid',
+  margin: '2rem',
 };
 const highLightStyle = {
-  // border: '1px black solid',
-  boxShadow: '1px 2px 3px 1px #888888',
-  maxWidth: '75px',
+  boxShadow: '1px 2px 1px 1px #CCC',
+  maxWidth: '100px',
   transition: 'all 0.08s',
   scale: '1.05',
 };

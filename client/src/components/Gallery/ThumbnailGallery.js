@@ -27,11 +27,10 @@ const ThumbnailGallery = ({
       style={{
         height: '100px',
         position: 'relative',
-        // marginTop: '-150px',
+        marginTop: '-105px',
         display: 'flex',
         alignContent: 'space-between',
         alignItems: 'center',
-        // left: '25%',
       }}>
       <FontAwesomeIcon
         icon={faChevronLeft}
@@ -44,8 +43,6 @@ const ThumbnailGallery = ({
         }}
       />
       {currentStylePics.map((style, i) => {
-        console.log('rendering');
-        console.log(i === 1 && imageUrls[i].thumbnail_url);
         return (
           <ThumbnailImage
             key={styles[i + currentMin].style_id}
@@ -60,6 +57,7 @@ const ThumbnailGallery = ({
 
       <FontAwesomeIcon
         icon={faChevronRight}
+        style={chevronStyles}
         onClick={() => {
           if (currentMax + 1 < imageUrls.length) {
             setCurrentMax(currentMax + 1);
@@ -71,7 +69,11 @@ const ThumbnailGallery = ({
   );
 };
 
-const chevronStyles = {};
+const chevronStyles = {
+  color: '#FFF',
+  opacity: '.5',
+  margin: '1rem',
+};
 
 ThumbnailGallery.propTypes = {
   styles: PropTypes.array.isRequired,
