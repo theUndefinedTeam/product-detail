@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Image, Carousel, Col } from 'react-bootstrap';
 import ThumbnailGallery from './ThumbnailGallery';
+import CustomCarousel from './CustomCarousel';
+
 const CarouselContainer = ({
   styles,
   currentStyleIdx,
@@ -15,7 +17,15 @@ const CarouselContainer = ({
         flexDirection: 'column',
         alignItems: 'center',
       }}>
-      <Carousel controls={false} indicators={false} style={carouselStyles}>
+      <CustomCarousel
+        src={imageUrls[currentStyleIdx].url}
+        style={{ maxHeight: '80vh' }}
+        styles={styles}
+        imageUrls={imageUrls}
+        currentStyleIdx={currentStyleIdx}
+        setCurrentStyleIdx={setCurrentStyleIdx}
+      />
+      {/* <Carousel controls={false} indicators={false} style={carouselStyles}>
         {styles.map((style) => (
           <Carousel.Item key={style.style_id} interval={4000000}>
             <Image
@@ -25,7 +35,7 @@ const CarouselContainer = ({
             />
           </Carousel.Item>
         ))}
-      </Carousel>
+      </Carousel> */}
       <ThumbnailGallery
         styles={styles}
         imageUrls={imageUrls}
@@ -37,7 +47,7 @@ const CarouselContainer = ({
   );
 };
 const carouselStyles = {
-  boxShadow: '2px 3px 4px 2px #abb3ae',
+  // boxShadow: '2px 3px 4px 2px #abb3ae',
 };
 const thumbnailGalleryStyles = {
   marginTop: '-150px',

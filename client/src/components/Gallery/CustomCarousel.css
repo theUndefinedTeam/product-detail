@@ -1,4 +1,4 @@
-#carousel-body {
+/* #carousel-body {
   overflow: hidden;
   width: 100%;
   transition: all 0.3s;
@@ -20,4 +20,38 @@
 }
 .slide-next {
   transform: translateX(200%);
+} */
+
+#carousel {
+  display: flex;
+  align-items: center;
+}
+.slide {
+  max-width: 100%;
+}
+i {
+  font-size: 4rem;
+}
+.fa-chevron-left {
+  position: relative;
+  left: 60px;
+  z-index: 5;
+  color: black;
+  opacity: 0.4;
+}
+.fa-chevron-left:hover {
+  cursor: pointer;
+}
+.fa-chevron-right {
+  position: relative;
+  right: 60px;
+  z-index: 5;
+  color: black;
+  opacity: 0.4;
+}
+.fa-chevron-right:hover {
+  cursor: pointer;
+}
+.hidden {
+  display: none;
 }

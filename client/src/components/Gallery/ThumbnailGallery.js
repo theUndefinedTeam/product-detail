@@ -27,7 +27,7 @@ const ThumbnailGallery = ({
       style={{
         height: '100px',
         position: 'relative',
-        marginTop: '-105px',
+        // marginTop: '-105px',
         display: 'flex',
         alignContent: 'space-between',
         alignItems: 'center',
@@ -70,8 +70,9 @@ const ThumbnailGallery = ({
 };
 
 const chevronStyles = {
-  color: 'grey',
-  opacity: '.7',
+  position: 'relative',
+  color: 'black',
+  opacity: '.8',
   margin: '1rem',
 };
 
