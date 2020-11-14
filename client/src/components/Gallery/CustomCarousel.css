@@ -1,0 +1,23 @@
+#carousel-body {
+  overflow: hidden;
+  width: 100%;
+  transition: all 0.3s;
+}
+.slide {
+  width: 100%;
+  height: auto;
+  transition: all 0.3s;
+  transform: translateX(-200%);
+}
+.previous {
+  transform: translateX(-100%);
+}
+.current {
+  transform: translateX(0);
+}
+.next {
+  transform: translateX(100%);
+}
+.slide-next {
+  transform: translateX(200%);
+}

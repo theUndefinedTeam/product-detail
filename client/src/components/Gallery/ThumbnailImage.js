@@ -27,7 +27,7 @@ const styles = {
   margin: '2rem',
 };
 const highLightStyle = {
-  boxShadow: '1px 2px 1px 1px #CCC',
+  boxShadow: '1px 2px 3px 1px #CCC',
   maxWidth: '100px',
   transition: 'all 0.08s',
   scale: '1.05',

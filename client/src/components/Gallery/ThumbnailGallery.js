@@ -70,8 +70,8 @@ const ThumbnailGallery = ({
 };
 
 const chevronStyles = {
-  color: '#FFF',
-  opacity: '.5',
+  color: 'grey',
+  opacity: '.7',
   margin: '1rem',
 };
 
