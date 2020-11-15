@@ -25,17 +25,6 @@ const CarouselContainer = ({
         currentStyleIdx={currentStyleIdx}
         setCurrentStyleIdx={setCurrentStyleIdx}
       />
-      {/* <Carousel controls={false} indicators={false} style={carouselStyles}>
-        {styles.map((style) => (
-          <Carousel.Item key={style.style_id} interval={4000000}>
-            <Image
-              className='d-block w-100'
-              src={imageUrls[currentStyleIdx].url}
-              style={{ maxHeight: '80vh' }}
-            />
-          </Carousel.Item>
-        ))}
-      </Carousel> */}
       <ThumbnailGallery
         styles={styles}
         imageUrls={imageUrls}

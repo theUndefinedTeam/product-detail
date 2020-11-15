@@ -13,28 +13,32 @@ const ThumbnailGallery = ({
   setCurrentStyleIdx,
   imageUrls,
 }) => {
-  const [currentMax, setCurrentMax] = useState(4);
+  const [currentMax, setCurrentMax] = useState(5);
   const [currentMin, setCurrentMin] = useState(0);
   const [currentStylePics, setCurrentStylePics] = useState([]);
 
   useEffect(() => {
+    // if (currentStyleIdx >= currentMax && currentMax) {
+    //   setCurrentMax(currentStyleIdx);
+    //   setCurrentMin(currentMax - 5);
+    // }
     const newArr = imageUrls.slice(currentMin, currentMax);
     setCurrentStylePics(newArr);
-  }, [currentMin, currentMax]);
+  }, [currentMin, currentMax, currentStyleIdx]);
 
   return (
     <div
       style={{
-        height: '100px',
+        height: '80px',
         position: 'relative',
-        // marginTop: '-105px',
+        marginTop: '-105px',
         display: 'flex',
         alignContent: 'space-between',
         alignItems: 'center',
       }}>
       <FontAwesomeIcon
         icon={faChevronLeft}
-        style={chevronStyles}
+        style={chevronLeftStyles}
         onClick={() => {
           if (currentMin > 0) {
             setCurrentMax(currentMax - 1);
@@ -42,8 +46,8 @@ const ThumbnailGallery = ({
           }
         }}
       />
-      {currentStylePics.map((style, i) => {
-        return (
+      <div id='thumbnail-images' style={thumbnailImagesStyles}>
+        {currentStylePics.map((style, i) => (
           <ThumbnailImage
             key={styles[i + currentMin].style_id}
             image={currentStylePics[i].thumbnail_url}
@@ -52,14 +56,13 @@ const ThumbnailGallery = ({
             currentStyleIdx={currentStyleIdx}
             setCurrentStyleIdx={setCurrentStyleIdx}
           />
-        );
-      })}
-
+        ))}
+      </div>
       <FontAwesomeIcon
         icon={faChevronRight}
-        style={chevronStyles}
+        style={chevronRightStyles}
         onClick={() => {
-          if (currentMax + 1 < imageUrls.length) {
+          if (currentMax + 1 <= imageUrls.length) {
             setCurrentMax(currentMax + 1);
             setCurrentMin(currentMin + 1);
           }
@@ -69,11 +72,26 @@ const ThumbnailGallery = ({
   );
 };
 
-const chevronStyles = {
+const chevronRightStyles = {
   position: 'relative',
-  color: 'black',
+  color: 'white',
   opacity: '.8',
+  fontSize: '1.5em',
   margin: '1rem',
+  left: '2.5rem',
+};
+const chevronLeftStyles = {
+  position: 'relative',
+  color: 'white',
+  opacity: '.8',
+  fontSize: '1.5em',
+  margin: '1rem',
+  right: '3rem',
+};
+const thumbnailImagesStyles = {
+  display: 'flex',
+  position: 'relative',
+  left: '3.3rem',
 };
 
 ThumbnailGallery.propTypes = {

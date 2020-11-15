@@ -20,10 +20,12 @@ const CustomCarousel = ({
   };
   return (
     <div id='carousel'>
-      <i
-        className='fas fa-chevron-left'
-        onClick={() => handleChevron('prev')}
-      />
+      <span>
+        <i
+          className='fas fa-chevron-left'
+          onClick={() => handleChevron('prev')}
+        />
+      </span>
       <img className='slide' src={imageUrls[currentStyleIdx].url} />
       <span>
         <i
