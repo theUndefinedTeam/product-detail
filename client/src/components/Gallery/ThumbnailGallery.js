@@ -92,6 +92,7 @@ const thumbnailImagesStyles = {
   display: 'flex',
   position: 'relative',
   left: '3.3rem',
+  zIndex: '100',
 };
 
 ThumbnailGallery.propTypes = {

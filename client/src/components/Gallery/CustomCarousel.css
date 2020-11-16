@@ -22,9 +22,12 @@
   transform: translateX(200%);
 } */
 
-#carousel {
+/* #carousel {
   display: flex;
   align-items: center;
+}
+#carousel:hover {
+  cursor: zoom-in;
 }
 .slide {
   max-width: 100%;
@@ -55,3 +58,10 @@ i {
 .hidden {
   display: none;
 }
+img.expanded {
+  height: 100vh;
+  top: 50;
+  left: 50;
+  z-index: 99;
+  cursor: zoom-out;
+} */

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './CustomCarousel.css';
 import imageUrls from '../../urlData/urls';
@@ -10,6 +10,7 @@ const CustomCarousel = ({
   styles,
   imageUrls,
 }) => {
+  const [expandedView, toggleExpandedView] = useState(false);
   const handleChevron = (dir) => {
     if (dir === 'prev' && currentStyleIdx > 0) {
       setCurrentStyleIdx(currentStyleIdx - 1);
@@ -18,6 +19,7 @@ const CustomCarousel = ({
       setCurrentStyleIdx(currentStyleIdx + 1);
     }
   };
+
   return (
     <div id='carousel'>
       <span>
@@ -26,7 +28,21 @@ const CustomCarousel = ({
           onClick={() => handleChevron('prev')}
         />
       </span>
-      <img className='slide' src={imageUrls[currentStyleIdx].url} />
+      <img
+        className='slide'
+        src={imageUrls[currentStyleIdx].url}
+        onClick={(e) => {
+          if (expandedView) {
+            e.target.classList.add('expanded');
+            e.target.classList.remove('slide');
+            toggleExpandedView(!expandedView);
+          } else {
+            e.target.classList.remove('expanded');
+            e.target.classList.add('slide');
+            toggleExpandedView(!expandedView);
+          }
+        }}
+      />
       <span>
         <i
           className='fas fa-chevron-right'
@@ -37,7 +53,7 @@ const CustomCarousel = ({
   );
 };
 const carouselStyles = {
-  maxHeight: '80vh',
+  // maxHeight: '80vh',
   // boxShadow: '2px 3px 4px 2px #abb3ae',
   display: 'flex',
   alignItems: 'center',
@@ -48,6 +64,7 @@ const rightChevronStyles = {
   zIndex: 9,
   color: 'black',
 };
+
 CustomCarousel.propTypes = {
   currentStyleIdx: PropTypes.number.isRequired,
   setCurrentStyleIdx: PropTypes.func.isRequired,

@@ -39,7 +39,7 @@ const carouselStyles = {
   // boxShadow: '2px 3px 4px 2px #abb3ae',
 };
 const thumbnailGalleryStyles = {
-  marginTop: '-150px',
+  marginTop: '-100px',
 };
 
 CarouselContainer.propTypes = {
