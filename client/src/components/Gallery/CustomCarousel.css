@@ -22,7 +22,7 @@
   transform: translateX(200%);
 } */
 
-/* #carousel {
+#carousel {
   display: flex;
   align-items: center;
 }
@@ -64,4 +64,4 @@ img.expanded {
   left: 50;
   z-index: 99;
   cursor: zoom-out;
-} */
+}

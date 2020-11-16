@@ -49,7 +49,7 @@ const ThumbnailGallery = ({
       <div id='thumbnail-images' style={thumbnailImagesStyles}>
         {currentStylePics.map((style, i) => (
           <ThumbnailImage
-            key={styles[i + currentMin].style_id}
+            key={i}
             image={currentStylePics[i].thumbnail_url}
             imgIdx={i + currentMin}
             thumbNailIdx={i}
