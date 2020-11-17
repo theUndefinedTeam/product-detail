@@ -4,11 +4,16 @@ import { Card, Row } from 'react-bootstrap';
 import StarReviews from './StarReviews';
 import StyleSelector from './StyleSelector';
 import Dropdowns from './Dropdowns';
-const ProductPurchasePanel = ({ reviewMeta }) => {
+const ProductPurchasePanel = ({
+  reviewMeta,
+  styles,
+  currentStyleIdx,
+  productId,
+}) => {
   return (
     <Card className='ml-3' style={{ backgroundColor: 'pink' }}>
       <Row>
-        <StarReviews reviewMeta={reviewMeta} />
+        {/* <StarReviews reviewMeta={reviewMeta} /> */}
         <a
           href='#!'
           style={{
@@ -23,11 +28,20 @@ const ProductPurchasePanel = ({ reviewMeta }) => {
       <h2>Expanded Product Name</h2>
       <p>$9999</p>
       <StyleSelector />
-      <Dropdowns />
+      <Dropdowns
+        style={styles.results[currentStyleIdx]}
+        currentStyleIdx={currentStyleIdx}
+        productId={productId}
+      />
     </Card>
   );
 };
 
-ProductPurchasePanel.propTypes = {};
+ProductPurchasePanel.propTypes = {
+  reviewMeta: PropTypes.object.isRequired,
+  currentStyleIdx: PropTypes.number.isRequired,
+  styles: PropTypes.object.isRequired,
+  productId: PropTypes.string.isRequired,
+};
 
 export default ProductPurchasePanel;

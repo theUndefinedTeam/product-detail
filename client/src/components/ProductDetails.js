@@ -51,7 +51,14 @@ const ProductDetails = ({
               /> */}
             </Col>
             <Col>
-              {reviewMeta && <ProductPurchasePanel reviewMeta={reviewMeta} />}
+              {reviewMeta && (
+                <ProductPurchasePanel
+                  reviewMeta={reviewMeta}
+                  styles={styleInfo}
+                  currentStyleIdx={currentStyleIdx}
+                  productId={id}
+                />
+              )}
             </Col>
           </Row>
           <Row>
