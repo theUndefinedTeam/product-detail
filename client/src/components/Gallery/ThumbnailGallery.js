@@ -18,24 +18,12 @@ const ThumbnailGallery = ({
   const [currentStylePics, setCurrentStylePics] = useState([]);
 
   useEffect(() => {
-    // if (currentStyleIdx >= currentMax && currentMax) {
-    //   setCurrentMax(currentStyleIdx);
-    //   setCurrentMin(currentMax - 5);
-    // }
     const newArr = imageUrls.slice(currentMin, currentMax);
     setCurrentStylePics(newArr);
   }, [currentMin, currentMax, currentStyleIdx]);
 
   return (
-    <div
-      style={{
-        height: '80px',
-        position: 'relative',
-        marginTop: '-105px',
-        display: 'flex',
-        alignContent: 'space-between',
-        alignItems: 'center',
-      }}>
+    <div style={thumbnailGalleryStyles}>
       <FontAwesomeIcon
         icon={faChevronLeft}
         style={chevronLeftStyles}
@@ -87,6 +75,14 @@ const chevronLeftStyles = {
   fontSize: '1.5em',
   margin: '1rem',
   right: '3rem',
+};
+const thumbnailGalleryStyles = {
+  height: '80px',
+  position: 'relative',
+  marginTop: '-105px',
+  display: 'flex',
+  alignContent: 'space-between',
+  alignItems: 'center',
 };
 const thumbnailImagesStyles = {
   display: 'flex',

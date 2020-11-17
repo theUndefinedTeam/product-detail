@@ -14,7 +14,7 @@ const ProductDetails = ({
 }) => {
   const [productInfo, setProductInfo] = useState([]);
   const [styleInfo, setStyleInfo] = useState(null);
-  const [reviewMeta, setReviewMeta] = useState([]);
+  const [reviewMeta, setReviewMeta] = useState(null);
   const [currentStyleIdx, setCurrentStyleIdx] = useState(0);
   const [thumbnailIdx, setThumbnailIdx] = useState(0);
 
@@ -43,15 +43,15 @@ const ProductDetails = ({
         <Container>
           <Row>
             <Col lg={8}>
-              <CarouselContainer
+              {/* <CarouselContainer
                 currentStyleIdx={currentStyleIdx}
                 styles={styleInfo.results}
                 imageUrls={imageUrls}
                 setCurrentStyleIdx={setCurrentStyleIdx}
-              />
+              /> */}
             </Col>
             <Col>
-              <ProductPurchasePanel />
+              {reviewMeta && <ProductPurchasePanel reviewMeta={reviewMeta} />}
             </Col>
           </Row>
           <Row>

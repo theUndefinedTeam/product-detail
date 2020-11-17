@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-const Star = (props) => {
-  return <div>STAR</div>;
+import { Glyphicon, Button } from 'react-bootstrap';
+import { AiFillStar } from 'react-icons/ai';
+const Star = ({ starPoints }) => {
+  console.log(starPoints);
+  return <div></div>;
 };
 
 Star.propTypes = {};
