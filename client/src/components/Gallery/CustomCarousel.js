@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './CustomCarousel.css';
 import imageUrls from '../../urlData/urls';
 import { TiChevronLeftOutline, TiChevronRightOutline } from 'react-icons/ti';
-
+import { Image } from 'react-bootstrap';
 const CustomCarousel = ({
   currentStyleIdx,
   setCurrentStyleIdx,
@@ -11,6 +11,7 @@ const CustomCarousel = ({
   imageUrls,
 }) => {
   const [expandedView, toggleExpandedView] = useState(false);
+  const [backgroundPosition, setBackgroundPosition] = useState(`0% 0%`);
   const handleChevron = (dir) => {
     if (dir === 'prev' && currentStyleIdx > 0) {
       setCurrentStyleIdx(currentStyleIdx - 1);
@@ -18,6 +19,13 @@ const CustomCarousel = ({
     if (dir === 'next' && currentStyleIdx < imageUrls.length - 1) {
       setCurrentStyleIdx(currentStyleIdx + 1);
     }
+  };
+
+  const handleMouseMove = (e) => {
+    const { left, top, width, height } = e.target.getBoundingClientRect();
+    const x = ((e.pageX - left) / width) * 100;
+    const y = ((e.pageY - top) / height) * 100;
+    setBackgroundPosition(`${x}% ${y}%`);
   };
 
   return (
@@ -28,7 +36,7 @@ const CustomCarousel = ({
           onClick={() => handleChevron('prev')}
         />
       </span>
-      <img
+      <Image
         className='slide'
         src={imageUrls[currentStyleIdx].url}
         onClick={(e) => {
@@ -42,6 +50,7 @@ const CustomCarousel = ({
             toggleExpandedView(!expandedView);
           }
         }}
+        rounded
       />
       <span>
         <i
@@ -58,6 +67,7 @@ const carouselStyles = {
   display: 'flex',
   alignItems: 'center',
 };
+
 const rightChevronStyles = {
   // marginRight: '-100px',
   height: '40px',
