@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Row, Col, Button, Alert } from 'react-bootstrap';
+import axios from 'axios';
 
-const Dropdowns = ({ style, currentStyleIdx, productId }) => {
+const Dropdowns = ({ style, productId }) => {
   const selectSizeRef = useRef(null);
   const [currentSize, setCurrentSize] = useState(null);
   const [currentStyleQty, setCurrentStyleQty] = useState(0);
@@ -18,6 +19,16 @@ const Dropdowns = ({ style, currentStyleIdx, productId }) => {
     if (currentSize === null) {
       setShowMessage(true);
     }
+    axios
+      .post(' http://52.26.193.201:3000/cart/', {
+        product_id: Number(productId),
+        user_session: 300,
+      })
+      .then((res) => console.log(res.data))
+      .catch((err) =>
+        console.error('ERROR @ handleAddClick Dropdowns.js', err.message)
+      );
+
     setCart({
       ...cart,
       item: {
@@ -105,7 +116,6 @@ const iconStyles = {
 
 Dropdowns.propTypes = {
   style: PropTypes.object.isRequired,
-  currentStyleIdx: PropTypes.number.isRequired,
   productId: PropTypes.string.isRequired,
 };
 
