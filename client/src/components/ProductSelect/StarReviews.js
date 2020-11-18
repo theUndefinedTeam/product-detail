@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Star from './Star';
-import './Star.css';
+// import './Star.css';
 import getReviewPoints from '../../utils/getReviewPoints';
 
 const StarReviews = ({ reviewMeta }) => {

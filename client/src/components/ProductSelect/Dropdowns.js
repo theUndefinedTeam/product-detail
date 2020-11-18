@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Row, Col, Button, Alert } from 'react-bootstrap';
 
 const Dropdowns = ({ style, currentStyleIdx, productId }) => {
-  console.log({ style });
+  const selectSizeRef = useRef(null);
   const [currentSize, setCurrentSize] = useState(null);
   const [currentStyleQty, setCurrentStyleQty] = useState(0);
   const [selectedQty, setSelectedQty] = useState(0);
@@ -27,7 +27,6 @@ const Dropdowns = ({ style, currentStyleIdx, productId }) => {
         qty: selectedQty,
       },
     });
-    console.log({ cart });
   };
 
   return (
@@ -39,11 +38,14 @@ const Dropdowns = ({ style, currentStyleIdx, productId }) => {
             <Form.Control
               as='select'
               size='sm'
+              ref={selectSizeRef}
               onChange={(e) => {
+                console.log(selectSizeRef.current);
                 setCurrentSize(e.target.value);
                 setCurrentStyleQty(style.skus[e.target.value]);
                 setSelectedQty(1);
-              }}>
+              }}
+              className='w-50'>
               <option>Select Size</option>
               {Object.keys(style.skus).map((size, i) =>
                 style.skus[size] ? (
@@ -62,6 +64,7 @@ const Dropdowns = ({ style, currentStyleIdx, productId }) => {
             <Form.Control
               as='select'
               size='sm'
+              className='w-50'
               onChange={(e) => setSelectedQty(Number(e.target.value))}>
               {currentStyleQty ? (
                 [...new Array(currentStyleQty)].map(
@@ -80,9 +83,15 @@ const Dropdowns = ({ style, currentStyleIdx, productId }) => {
         </Row>
         <Row>
           <Col>
-            <Button variant='secondary' onClick={() => handleAddClick()}>
+            <Button
+              variant='secondary'
+              onClick={() => handleAddClick()}
+              size='sm'>
               Add to Cart{' '}
               <i className='fas fa-plus ml-1' style={iconStyles}></i>
+            </Button>
+            <Button variant='secondary' size='sm' className='pull-right ml-4'>
+              <i className='fas fa-star' style={iconStyles}></i>
             </Button>
           </Col>
         </Row>

@@ -2,18 +2,18 @@ import ProductDetails from './ProductDetails';
 import NotFound from './NotFound';
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 
 const App = () => {
   return (
-    <Router>
+    <HashRouter>
       <Container>
         <Switch>
-          <Route path='/products/:id' component={ProductDetails} />
-          <Route component={NotFound} />
+          <Route path='/:productId' children={<ProductDetails />} />
+          <Route children={<NotFound />} />
         </Switch>
       </Container>
-    </Router>
+    </HashRouter>
   );
 };
 
