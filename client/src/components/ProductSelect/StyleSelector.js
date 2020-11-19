@@ -13,7 +13,7 @@ const StyleSelector = ({
     let arr = [...styleArr];
     const slices = Math.ceil(styleArr.length / 4);
     return [...new Array(slices)].map((item) => {
-      return arr.splice(0, 4);
+      return arr.splice(0, 4).map((arr) => arr[0].thumbnail_url);
     });
   };
 
@@ -22,23 +22,24 @@ const StyleSelector = ({
     setCurrentStyleIdx(styleId);
     setCurrentImage(0);
   };
-  let styleCounter = -1;
-  const styleRows = makeStylesArrays(images);
 
+  let styleCounter = -1;
+  const thumbnailArrays = makeStylesArrays(images);
+  console.log('styleRows', thumbnailArrays);
   return (
     <Col>
-      {styleRows.map((row, i) => (
+      {thumbnailArrays.map((row, i) => (
         <Row key={i}>
-          {row.map((item, k) => {
+          {row.map((imageUrl) => {
             styleCounter++;
             return (
               <Fragment key={styleCounter}>
                 <Image
                   id={styleCounter}
-                  src={item[0].thumbnail_url}
+                  src={imageUrl}
                   roundedCircle
                   className='p3 ml-2 mb-2'
-                  style={{ width: '20%', borderRadius: '1px solid black' }}
+                  style={{ width: '20%', border: '2px solid white' }}
                   onClick={(e) => handleStyleSelect(e)}
                 />
                 {currentStyleIdx === styleCounter && (
@@ -54,6 +55,7 @@ const StyleSelector = ({
     </Col>
   );
 };
+
 const checkStyles = {
   position: 'fixed',
   left: '20px',

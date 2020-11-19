@@ -41,7 +41,7 @@ const ProductDetails = (props) => {
     <Container>
       {styleInfo && styleInfo.results.length && (
         <Container>
-          <Row>
+          <Row className='mt-2'>
             <Col lg={8}>
               <CarouselContainer
                 currentStyleIdx={currentStyleIdx}

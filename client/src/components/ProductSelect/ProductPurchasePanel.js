@@ -31,7 +31,6 @@ const ProductPurchasePanel = ({
       <h2>Expanded Product Name</h2>
       <p>$9999</p>
       <StyleSelector
-        styles={styles.results}
         currentStyleIdx={currentStyleIdx}
         setCurrentStyleIdx={setCurrentStyleIdx}
         images={images}
