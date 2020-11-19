@@ -28,7 +28,9 @@ const StyleSelector = ({
   const thumbnailArrays = makeStylesArrays(images);
   return (
     <Col>
-      <h6>{styles.results[currentStyleIdx].name}</h6>
+      <h6>
+        Style {'>'} {styles.results[currentStyleIdx].name}
+      </h6>
       {thumbnailArrays.map((row, i) => (
         <Row key={i}>
           {row.map((imageUrl) => {

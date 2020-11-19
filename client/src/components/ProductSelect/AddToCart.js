@@ -43,68 +43,65 @@ const AddToCart = ({ style, productId }) => {
   return (
     <>
       <Form>
-        {showMessage && <Alert variant='info'>Select a size!</Alert>}
-        <Row>
-          <Col>
-            <Form.Control
-              as='select'
-              size='sm'
-              ref={selectSizeRef}
-              onChange={(e) => {
-                setCurrentSize(e.target.value);
-                setCurrentStyleQty(style.skus[e.target.value]);
-                setSelectedQty(1);
-              }}
-              className='w-50'>
-              <option>Select Size</option>
-              {Object.keys(style.skus).map((size, i) =>
-                style.skus[size] ? (
-                  <option key={i} value={size} name={size}>
-                    {size}
-                  </option>
-                ) : (
-                  <option key={i} value={size}>
-                    OUT OF STOCK
-                  </option>
-                )
-              )}
-            </Form.Control>
-          </Col>
-          <Col>
-            <Form.Control
-              as='select'
-              size='sm'
-              className='w-50'
-              value={selectedQty}
-              onChange={(e) => setSelectedQty(Number(e.target.value))}>
-              {currentStyleQty ? (
-                [...new Array(currentStyleQty)].map(
-                  (qty, i) =>
-                    i < 15 && (
-                      <option key={i} value={i + 1}>
-                        {i + 1}
-                      </option>
-                    )
-                )
+        {showMessage && (
+          <Alert variant='info' className='w-75'>
+            Select a size!
+          </Alert>
+        )}
+        <Row className='w-75 ml-2'>
+          <Form.Control
+            as='select'
+            size='sm'
+            ref={selectSizeRef}
+            onChange={(e) => {
+              setCurrentSize(e.target.value);
+              setCurrentStyleQty(style.skus[e.target.value]);
+              setSelectedQty(1);
+            }}
+            style={{ maxWidth: '70%' }}>
+            <option>Select Size</option>
+            {Object.keys(style.skus).map((size, i) =>
+              style.skus[size] ? (
+                <option key={i} value={size} name={size}>
+                  {size}
+                </option>
               ) : (
-                <option> - </option>
-              )}
-            </Form.Control>
-          </Col>
+                <option key={i} value={size}>
+                  OUT OF STOCK
+                </option>
+              )
+            )}
+          </Form.Control>
+          <Form.Control
+            as='select'
+            size='sm'
+            className='w-25 ml-1'
+            value={selectedQty}
+            onChange={(e) => setSelectedQty(Number(e.target.value))}>
+            {currentStyleQty ? (
+              [...new Array(currentStyleQty)].map(
+                (qty, i) =>
+                  i < 15 && (
+                    <option key={i} value={i + 1}>
+                      {i + 1}
+                    </option>
+                  )
+              )
+            ) : (
+              <option> - </option>
+            )}
+          </Form.Control>
         </Row>
-        <Row>
-          <Col>
-            <Button
-              variant='secondary'
-              onClick={() => handleAddClick()}
-              size='sm'>
-              Add to Cart{' '}
-              <i className='fas fa-plus ml-1' style={iconStyles}></i>
-            </Button>
-            <Button variant='secondary' size='sm' className='pull-right ml-4'>
-              <i className='fas fa-star' style={iconStyles}></i>
-            </Button>
-          </Col>
+        <Row className='ml-2 mt-1'>
+          <Button
+            variant='secondary'
+            onClick={() => handleAddClick()}
+            size='sm'>
+            Add to Cart <i className='fas fa-plus ml-1' style={iconStyles}></i>
+          </Button>
+          <Button variant='secondary' size='sm' className='ml-1'>
+            <i className='fas fa-star' style={iconStyles}></i>
+          </Button>
         </Row>
       </Form>
     </>

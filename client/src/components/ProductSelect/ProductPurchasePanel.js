@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Card, Row } from 'react-bootstrap';
-import StarReviews from './StarReviews';
 import StyleSelector from './StyleSelector';
 import AddToCart from './AddToCart';
+import StarReviews from './StarReviews';
+
 const ProductPurchasePanel = ({
   reviewMeta,
   styles,
@@ -12,24 +13,33 @@ const ProductPurchasePanel = ({
   productId,
   images,
   setCurrentImage,
+  productInfo,
 }) => {
+  const {
+    sale_price: salePrice,
+    original_price: originalPrice,
+  } = styles.results[currentStyleIdx];
+
+  const isSale = Number(salePrice) > 0;
+
   return (
-    <Card className='ml-3 h-100' style={{ backgroundColor: 'pink' }}>
+    <Card className='ml-3 h-100 p-1 ml-1'>
       <Row>
-        {/* <StarReviews reviewMeta={reviewMeta} /> */}
-        <a
-          href='#!'
-          style={{
-            color: 'grey',
-            textDecoration: 'underline',
-            fontSize: '12px',
-          }}>
-          Read all Reviews
-        </a>
+        <StarReviews reviewMeta={reviewMeta} />
       </Row>
-      <p>Category</p>
-      <h2>Expanded Product Name</h2>
-      <p>$9999</p>
+      <p>{productInfo.category}</p>
+      <h2>{productInfo.name}</h2>
+      {/* Below line renders price and styles the text based on whether there is a sale */}
+      <p>
+        {isSale && <span>${salePrice}</span>}
+        <span>
+          {isSale ? (
+            <strike className='ml-2 text-danger'>${originalPrice}</strike>
+          ) : (
+            `  $${originalPrice}`
+          )}
+        </span>
+      </p>
       <StyleSelector
         currentStyleIdx={currentStyleIdx}
         setCurrentStyleIdx={setCurrentStyleIdx}
@@ -45,6 +55,10 @@ const ProductPurchasePanel = ({
   );
 };
 
+const noSaleStyle = {
+  color: 'black',
+};
+
 ProductPurchasePanel.propTypes = {
   setCurrentImage: PropTypes.func.isRequired,
   reviewMeta: PropTypes.object.isRequired,
@@ -53,6 +67,7 @@ ProductPurchasePanel.propTypes = {
   styles: PropTypes.object.isRequired,
   productId: PropTypes.string.isRequired,
   images: PropTypes.array.isRequired,
+  productInfo: PropTypes.object.isRequired,
 };
 
 export default ProductPurchasePanel;
