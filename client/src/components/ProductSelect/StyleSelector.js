@@ -7,6 +7,7 @@ const StyleSelector = ({
   currentStyleIdx,
   images,
   setCurrentImage,
+  styles,
 }) => {
   //makes arrays of a length of 4 for creating maximum length
   const makeStylesArrays = (styleArr) => {
@@ -25,9 +26,9 @@ const StyleSelector = ({
 
   let styleCounter = -1;
   const thumbnailArrays = makeStylesArrays(images);
-  console.log('styleRows', thumbnailArrays);
   return (
     <Col>
+      <h6>{styles.results[currentStyleIdx].name}</h6>
       {thumbnailArrays.map((row, i) => (
         <Row key={i}>
           {row.map((imageUrl) => {
@@ -35,12 +36,14 @@ const StyleSelector = ({
             return (
               <Fragment key={styleCounter}>
                 <Image
+                  data-testid='style-select-image'
                   id={styleCounter}
                   src={imageUrl}
                   roundedCircle
                   className='p3 ml-2 mb-2'
                   style={{ width: '20%', border: '2px solid white' }}
                   onClick={(e) => handleStyleSelect(e)}
+                  alt='product style'
                 />
                 {currentStyleIdx === styleCounter && (
                   <span>
@@ -61,6 +64,7 @@ const checkStyles = {
   left: '20px',
 };
 StyleSelector.propTypes = {
+  styles: PropTypes.object.isRequired,
   currentStyleIdx: PropTypes.number.isRequired,
   setCurrentStyleIdx: PropTypes.func.isRequired,
   images: PropTypes.array.isRequired,

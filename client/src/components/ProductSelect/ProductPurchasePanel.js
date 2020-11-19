@@ -35,6 +35,7 @@ const ProductPurchasePanel = ({
         setCurrentStyleIdx={setCurrentStyleIdx}
         images={images}
         setCurrentImage={setCurrentImage}
+        styles={styles}
       />
       <AddToCart
         style={styles.results[currentStyleIdx]}
