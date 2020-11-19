@@ -10,8 +10,6 @@ const StarReviews = ({ reviewMeta }) => {
   const [fillPct, setFillPct] = useState(0);
 
   useEffect(() => {
-    // setReviewPointArr(getReviewPoints(ratings));
-    console.log({ ratings, reviewMeta });
     if (!Object.values(ratings).length) return;
     const totalPossibleStars =
       Object.values(ratings).reduce((acc, num) => (acc += num)) * 5;
@@ -24,18 +22,15 @@ const StarReviews = ({ reviewMeta }) => {
       (totalStarsReceived / totalPossibleStars) * 100
     );
     setFillPct(`${pctInteger}%`);
-    console.log({ fillPct });
   }, [ratings, reviewMeta]);
-  console.log({ reviewPointArr });
   return (
     <div className='d-inline-flex ml-4'>
       <span className='ratings'>
         <div className='empty-stars'></div>
-        {console.log(fillPct)}
         <div className='full-stars' style={{ width: fillPct }}></div>
       </span>
       <a
-        href='#!'
+        href='/#/1'
         style={{
           // color: 'grey',
           textDecoration: 'underline',

@@ -38,13 +38,15 @@ const AddToCart = ({ style, productId }) => {
         qty: selectedQty,
       },
     });
+    selectSizeRef.current.selected = true;
+    setCurrentSize(null);
   };
 
   return (
     <>
       <Form>
         {showMessage && (
-          <Alert variant='info' className='w-75'>
+          <Alert variant='info' className='w-50 ml-2'>
             Select a size!
           </Alert>
         )}
@@ -52,14 +54,13 @@ const AddToCart = ({ style, productId }) => {
           <Form.Control
             as='select'
             size='sm'
-            ref={selectSizeRef}
             onChange={(e) => {
               setCurrentSize(e.target.value);
               setCurrentStyleQty(style.skus[e.target.value]);
               setSelectedQty(1);
             }}
             style={{ maxWidth: '70%' }}>
-            <option>Select Size</option>
+            <option ref={selectSizeRef}>Select Size</option>
             {Object.keys(style.skus).map((size, i) =>
               style.skus[size] ? (
                 <option key={i} value={size} name={size}>

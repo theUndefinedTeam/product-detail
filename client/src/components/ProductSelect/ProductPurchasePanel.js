@@ -27,19 +27,21 @@ const ProductPurchasePanel = ({
       <Row>
         <StarReviews reviewMeta={reviewMeta} />
       </Row>
-      <p>{productInfo.category}</p>
-      <h2>{productInfo.name}</h2>
-      {/* Below line renders price and styles the text based on whether there is a sale */}
-      <p>
-        {isSale && <span>${salePrice}</span>}
-        <span>
-          {isSale ? (
-            <strike className='ml-2 text-danger'>${originalPrice}</strike>
-          ) : (
-            `  $${originalPrice}`
-          )}
-        </span>
-      </p>
+      <div className='info ml-3'>
+        <p>{productInfo.category}</p>
+        <h2>{productInfo.name}</h2>
+        {/* Below line renders price and styles the text based on whether there is a sale */}
+        <p>
+          {isSale && <span>${salePrice}</span>}
+          <span>
+            {isSale ? (
+              <strike className='ml-2 text-danger'>${originalPrice}</strike>
+            ) : (
+              `  $${originalPrice}`
+            )}
+          </span>
+        </p>
+      </div>
       <StyleSelector
         currentStyleIdx={currentStyleIdx}
         setCurrentStyleIdx={setCurrentStyleIdx}
