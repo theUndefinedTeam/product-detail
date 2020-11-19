@@ -7,12 +7,7 @@ import {
   faChevronLeft,
 } from '@fortawesome/free-solid-svg-icons';
 
-const ThumbnailGallery = ({
-  styles,
-  currentStyleIdx,
-  setCurrentStyleIdx,
-  imageUrls,
-}) => {
+const ThumbnailGallery = ({ currentImage, setCurrentImage, imageUrls }) => {
   const [currentMax, setCurrentMax] = useState(5);
   const [currentMin, setCurrentMin] = useState(0);
   const [currentStylePics, setCurrentStylePics] = useState([]);
@@ -20,7 +15,7 @@ const ThumbnailGallery = ({
   useEffect(() => {
     const newArr = imageUrls.slice(currentMin, currentMax);
     setCurrentStylePics(newArr);
-  }, [currentMin, currentMax, currentStyleIdx]);
+  }, [currentMin, currentMax, currentImage]);
 
   return (
     <div style={thumbnailGalleryStyles}>
@@ -40,9 +35,8 @@ const ThumbnailGallery = ({
             key={i}
             image={currentStylePics[i].thumbnail_url}
             imgIdx={i + currentMin}
-            thumbNailIdx={i}
-            currentStyleIdx={currentStyleIdx}
-            setCurrentStyleIdx={setCurrentStyleIdx}
+            currentImage={currentImage}
+            setCurrentImage={setCurrentImage}
           />
         ))}
       </div>
@@ -92,8 +86,8 @@ const thumbnailImagesStyles = {
 };
 
 ThumbnailGallery.propTypes = {
-  styles: PropTypes.array.isRequired,
-  currentStyleIdx: PropTypes.number.isRequired,
+  currentImage: PropTypes.number.isRequired,
+  setCurrentImage: PropTypes.func.isRequired,
 };
 
 export default ThumbnailGallery;

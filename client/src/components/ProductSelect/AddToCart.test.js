@@ -1,9 +1,9 @@
 import React from 'react';
-import Dropdowns from './Dropdowns';
+import AddToCart from './AddToCart';
 import { cleanup, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-describe('Dropdowns component tests', () => {
+describe('AddToCart component tests', () => {
   const style = {
     style_id: 1,
     name: 'Forest Green & Black',
@@ -59,7 +59,7 @@ describe('Dropdowns component tests', () => {
   const currentStyleIdx = 0;
   beforeEach(() =>
     render(
-      <Dropdowns
+      <AddToCart
         style={style}
         currentStyleIdx={currentStyleIdx}
         productId='1'
@@ -68,7 +68,7 @@ describe('Dropdowns component tests', () => {
   );
   afterEach(cleanup);
 
-  test('Renders Dropdowns component', () => {
+  test('Renders AddToCart component', () => {
     expect(screen.getByText('Add to Cart')).toBeInTheDocument();
     expect(screen.getByText('Select Size')).toBeInTheDocument();
   });

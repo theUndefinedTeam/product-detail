@@ -1,6 +1,6 @@
+import React from 'react';
 import ProductDetails from './ProductDetails';
 import NotFound from './NotFound';
-import React from 'react';
 import { Container } from 'react-bootstrap';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 

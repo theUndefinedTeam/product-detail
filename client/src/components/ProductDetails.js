@@ -13,8 +13,9 @@ const ProductDetails = (props) => {
   const [styleInfo, setStyleInfo] = useState(null);
   const [reviewMeta, setReviewMeta] = useState(null);
   const [currentStyleIdx, setCurrentStyleIdx] = useState(0);
-  const [thumbnailIdx, setThumbnailIdx] = useState(0);
   const { productId } = useParams();
+  const [images, setImages] = useState([]);
+  const [currentImage, setCurrentImage] = useState(0);
 
   const getAllData = async () => {
     try {
@@ -26,6 +27,7 @@ const ProductDetails = (props) => {
       await setProductInfo(returnedData[0].data);
       await setStyleInfo(returnedData[1].data);
       await setReviewMeta(returnedData[2].data);
+      await setImages(imageUrls.slice(0, returnedData[1].data.results.length));
     } catch (err) {
       console.error('Error at get all product data', err.message);
     }
@@ -41,20 +43,26 @@ const ProductDetails = (props) => {
         <Container>
           <Row>
             <Col lg={8}>
-              {/* <CarouselContainer
+              <CarouselContainer
                 currentStyleIdx={currentStyleIdx}
                 styles={styleInfo.results}
-                imageUrls={imageUrls}
+                imageUrls={imageUrls[currentStyleIdx]}
                 setCurrentStyleIdx={setCurrentStyleIdx}
-              /> */}
+                currentImage={currentImage}
+                setCurrentImage={setCurrentImage}
+              />
             </Col>
             <Col>
               {reviewMeta && (
                 <ProductPurchasePanel
                   reviewMeta={reviewMeta}
                   styles={styleInfo}
+                  images={images}
                   currentStyleIdx={currentStyleIdx}
+                  setCurrentStyleIdx={setCurrentStyleIdx}
+                  setCurrentImage={setCurrentImage}
                   productId={productId}
+                  setCurrentImage={setCurrentImage}
                 />
               )}
             </Col>

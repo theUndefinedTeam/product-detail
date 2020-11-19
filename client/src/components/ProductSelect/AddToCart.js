@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { Form, Row, Col, Button, Alert } from 'react-bootstrap';
 import axios from 'axios';
 
-const Dropdowns = ({ style, productId }) => {
+const AddToCart = ({ style, productId }) => {
   const selectSizeRef = useRef(null);
   const [currentSize, setCurrentSize] = useState(null);
-  const [currentStyleQty, setCurrentStyleQty] = useState(0);
+  const [currentStyleQty, setCurrentStyleQty] = useState(1);
   const [selectedQty, setSelectedQty] = useState(0);
   const [cart, setCart] = useState(null);
   const [showMessage, setShowMessage] = useState(false);
@@ -26,7 +26,7 @@ const Dropdowns = ({ style, productId }) => {
       })
       .then((res) => console.log(res.data))
       .catch((err) =>
-        console.error('ERROR @ handleAddClick Dropdowns.js', err.message)
+        console.error('ERROR @ handleAddClick AddToCart.js', err.message)
       );
 
     setCart({
@@ -51,7 +51,6 @@ const Dropdowns = ({ style, productId }) => {
               size='sm'
               ref={selectSizeRef}
               onChange={(e) => {
-                console.log(selectSizeRef.current);
                 setCurrentSize(e.target.value);
                 setCurrentStyleQty(style.skus[e.target.value]);
                 setSelectedQty(1);
@@ -76,6 +75,7 @@ const Dropdowns = ({ style, productId }) => {
               as='select'
               size='sm'
               className='w-50'
+              value={selectedQty}
               onChange={(e) => setSelectedQty(Number(e.target.value))}>
               {currentStyleQty ? (
                 [...new Array(currentStyleQty)].map(
@@ -114,9 +114,9 @@ const iconStyles = {
   fontSize: '12px',
 };
 
-Dropdowns.propTypes = {
+AddToCart.propTypes = {
   style: PropTypes.object.isRequired,
   productId: PropTypes.string.isRequired,
 };
 
-export default Dropdowns;
+export default AddToCart;
