@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Row, Col, Button, Alert } from 'react-bootstrap';
 import axios from 'axios';
-
+//TODO: Reset Select size on page update
 const AddToCart = ({ style, productId }) => {
   const selectSizeRef = useRef(null);
   const [currentSize, setCurrentSize] = useState(null);
