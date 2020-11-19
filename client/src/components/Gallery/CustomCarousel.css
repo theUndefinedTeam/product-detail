@@ -1,4 +1,4 @@
-/* #carousel {
+#carousel {
   display: flex;
   align-items: center;
 }
@@ -8,10 +8,11 @@
 .slide {
   max-width: 100%;
 }
-i {
+/* i. {
   font-size: 4rem;
-}
+} */
 .fa-chevron-left {
+  font-size: 4rem;
   position: relative;
   left: 60px;
   z-index: 100;
@@ -22,6 +23,7 @@ i {
   cursor: pointer;
 }
 .fa-chevron-right {
+  font-size: 4rem;
   position: relative;
   right: 60px;
   z-index: 100;
@@ -40,4 +42,4 @@ img.expanded {
   left: 50;
   z-index: 99;
   cursor: zoom-out;
-} */
+}
