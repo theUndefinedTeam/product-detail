@@ -55,10 +55,11 @@ const AddToCart = ({ style }) => {
             Select a size!
           </Alert>
         )}
-        <Row className='w-75 ml-2'>
+        <Row className='w-75 ml-2 mb-1'>
           <Form.Control
             as='select'
             size='sm'
+            className='mb-2'
             onChange={(e) => {
               setCurrentSize(e.target.value);
               setCurrentStyleQty(style.skus[e.target.value]);

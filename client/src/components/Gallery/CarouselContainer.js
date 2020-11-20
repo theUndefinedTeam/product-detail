@@ -21,7 +21,6 @@ const CarouselContainer = () => {
         alignItems: 'center',
       }}>
       <CustomCarousel
-        style={{ maxHeight: '80vh' }}
         imageUrls={images[currentStyleIdx]}
         currentImage={currentImage}
         setCurrentImage={setCurrentImage}

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row } from 'react-bootstrap';
 import StyleSelector from './StyleSelector';
 import AddToCart from './AddToCart';
@@ -54,5 +55,7 @@ const ProductPurchasePanel = ({}) => {
 const noSaleStyle = {
   color: 'black',
 };
+
+ProductPurchasePanel.propTypes = {};
 
 export default ProductPurchasePanel;

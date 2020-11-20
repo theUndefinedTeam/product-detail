@@ -14,12 +14,12 @@ const ThumbnailGallery = ({ currentImage, setCurrentImage, imageUrls }) => {
   const [currentStylePics, setCurrentStylePics] = useState([]);
 
   const productContext = useContext(ProductContext);
-  const { images } = productContext;
+  const { images, currentStyleIdx } = productContext;
 
   useEffect(() => {
     const newArr = imageUrls.slice(currentMin, currentMax);
     setCurrentStylePics(newArr);
-  }, [currentMin, currentMax, currentImage]);
+  }, [currentMin, currentMax, currentImage, currentStyleIdx]);
 
   return (
     <div style={thumbnailGalleryStyles}>
