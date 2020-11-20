@@ -1,4 +1,9 @@
-import { SET_PRODUCT_ID, PRODUCT_ERROR, GET_PRODUCT_INFO } from '../types';
+import {
+  SET_PRODUCT_ID,
+  PRODUCT_ERROR,
+  GET_PRODUCT_INFO,
+  SET_CURRENT_IMAGE,
+} from '../types';
 
 export default (state, action) => {
   const { payload, type } = action;
@@ -17,6 +22,11 @@ export default (state, action) => {
         styleInfo: payload[1].data,
         reviewMeta: payload[2].data,
         images: state.images.slice(0, payload[1].data.results.length),
+      };
+    case SET_CURRENT_IMAGE:
+      return {
+        ...state,
+        currentImage: payload,
       };
     case PRODUCT_ERROR:
       console.error('PRODUCT ERROR', payload);

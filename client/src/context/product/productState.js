@@ -2,7 +2,12 @@ import React, { useReducer } from 'react';
 import ProductContext from './productContext';
 import productReducer from './productReducer';
 import imageUrls from '../../urlData/urls';
-import { PRODUCT_ERROR, GET_PRODUCT_INFO, SET_PRODUCT_ID } from '../types';
+import {
+  PRODUCT_ERROR,
+  GET_PRODUCT_INFO,
+  SET_PRODUCT_ID,
+  SET_CURRENT_IMAGE,
+} from '../types';
 import axios from 'axios';
 
 const ProductState = (props) => {
@@ -12,7 +17,7 @@ const ProductState = (props) => {
     reviewMeta: null,
     // currentStyleIdx: 0,
     images: imageUrls,
-    // currentImage: 0,
+    currentImage: 0,
     productId: 1,
   };
 
@@ -47,6 +52,12 @@ const ProductState = (props) => {
     });
   };
 
+  const setCurrentImage = (idx) => {
+    dispatch({
+      type: SET_CURRENT_IMAGE,
+      payload: idx,
+    });
+  };
   return (
     <ProductContext.Provider
       value={{
@@ -55,8 +66,9 @@ const ProductState = (props) => {
         reviewMeta: state.reviewMeta,
         // currentStyleIdx: state.currentStyleIdx,
         images: state.images,
-        // currentImage: state.currentImage,
+        currentImage: state.currentImage,
         productId: state.productId,
+        setCurrentImage,
         setProductId,
         getAllProductInfo,
       }}>

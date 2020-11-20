@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
+import ProductContext from '../../context/product/productContext';
 import ThumbnailImage from './ThumbnailImage';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -11,6 +12,9 @@ const ThumbnailGallery = ({ currentImage, setCurrentImage, imageUrls }) => {
   const [currentMax, setCurrentMax] = useState(5);
   const [currentMin, setCurrentMin] = useState(0);
   const [currentStylePics, setCurrentStylePics] = useState([]);
+
+  const productContext = useContext(ProductContext);
+  const { images } = productContext;
 
   useEffect(() => {
     const newArr = imageUrls.slice(currentMin, currentMax);

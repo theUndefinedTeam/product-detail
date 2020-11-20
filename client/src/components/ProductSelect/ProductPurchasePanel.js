@@ -9,8 +9,6 @@ const ProductPurchasePanel = ({
   styles,
   currentStyleIdx,
   setCurrentStyleIdx,
-  images,
-  setCurrentImage,
   productInfo,
 }) => {
   const {
@@ -43,8 +41,6 @@ const ProductPurchasePanel = ({
       <StyleSelector
         currentStyleIdx={currentStyleIdx}
         setCurrentStyleIdx={setCurrentStyleIdx}
-        images={images}
-        setCurrentImage={setCurrentImage}
         styles={styles}
       />
       <AddToCart style={styles.results[currentStyleIdx]} />
@@ -57,11 +53,9 @@ const noSaleStyle = {
 };
 
 ProductPurchasePanel.propTypes = {
-  setCurrentImage: PropTypes.func.isRequired,
   currentStyleIdx: PropTypes.number.isRequired,
   setCurrentStyleIdx: PropTypes.func.isRequired,
   styles: PropTypes.object.isRequired,
-  images: PropTypes.array.isRequired,
   productInfo: PropTypes.object.isRequired,
 };
 

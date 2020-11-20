@@ -1,14 +1,11 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Col, Row, Image } from 'react-bootstrap';
+import ProductContext from '../../context/product/productContext';
 
-const StyleSelector = ({
-  setCurrentStyleIdx,
-  currentStyleIdx,
-  images,
-  setCurrentImage,
-  styles,
-}) => {
+const StyleSelector = ({ setCurrentStyleIdx, currentStyleIdx, styles }) => {
+  const productContext = useContext(ProductContext);
+  const { setCurrentImage, images } = productContext;
   //makes arrays of a length of 4 for creating maximum length
   const makeStylesArrays = (styleArr) => {
     let arr = [...styleArr];
@@ -69,8 +66,6 @@ StyleSelector.propTypes = {
   styles: PropTypes.object.isRequired,
   currentStyleIdx: PropTypes.number.isRequired,
   setCurrentStyleIdx: PropTypes.func.isRequired,
-  images: PropTypes.array.isRequired,
-  setCurrentImage: PropTypes.func.isRequired,
 };
 
 export default StyleSelector;
