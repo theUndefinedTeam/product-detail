@@ -6,15 +6,15 @@ import ProductContext from '../../context/product/productContext';
 
 //TODO: Reset Select size on page update
 const AddToCart = ({ style }) => {
-  const productContext = useContext(ProductContext);
-  const { productId } = productContext;
-
-  const selectSizeRef = useRef(null);
   const [currentSize, setCurrentSize] = useState(null);
   const [currentStyleQty, setCurrentStyleQty] = useState(1);
   const [selectedQty, setSelectedQty] = useState(0);
   const [cart, setCart] = useState(null);
   const [showMessage, setShowMessage] = useState(false);
+  const selectSizeRef = useRef(null);
+
+  const productContext = useContext(ProductContext);
+  const { productId } = productContext;
 
   useEffect(() => {
     currentSize !== null && setShowMessage(false);

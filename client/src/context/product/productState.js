@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const ProductState = (props) => {
   const initialState = {
-    productInfo: [],
+    productData: null,
     styleInfo: null,
     reviewMeta: null,
     // currentStyleIdx: 0,
@@ -50,7 +50,7 @@ const ProductState = (props) => {
   return (
     <ProductContext.Provider
       value={{
-        productInfo: state.productInfo,
+        productData: state.productData,
         styleInfo: state.styleInfo,
         reviewMeta: state.reviewMeta,
         // currentStyleIdx: state.currentStyleIdx,

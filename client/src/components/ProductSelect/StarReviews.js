@@ -1,13 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Star from './Star';
 import './Star.css';
+import ProductContext from '../../context/product/productContext';
 // import getReviewPoints from '../../utils/getReviewPoints';
 
-const StarReviews = ({ reviewMeta }) => {
-  const { ratings } = reviewMeta;
+const StarReviews = () => {
   const [reviewPointArr, setReviewPointArr] = useState([]);
   const [fillPct, setFillPct] = useState(0);
+
+  const productContext = useContext(ProductContext);
+  const {
+    reviewMeta,
+    reviewMeta: { ratings },
+  } = productContext;
 
   useEffect(() => {
     if (!Object.values(ratings).length) return;
@@ -51,7 +57,7 @@ const StarReviews = ({ reviewMeta }) => {
 
 // const starsStyle = { width: fillPct };
 StarReviews.propTypes = {
-  reviewMeta: PropTypes.object.isRequired,
+  // reviewMeta: PropTypes.object.isRequired,
 };
 
 export default StarReviews;

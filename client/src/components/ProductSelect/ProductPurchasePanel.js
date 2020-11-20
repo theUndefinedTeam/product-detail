@@ -6,7 +6,6 @@ import AddToCart from './AddToCart';
 import StarReviews from './StarReviews';
 
 const ProductPurchasePanel = ({
-  reviewMeta,
   styles,
   currentStyleIdx,
   setCurrentStyleIdx,
@@ -24,7 +23,7 @@ const ProductPurchasePanel = ({
   return (
     <Card className='ml-3 h-100 p-1 ml-1'>
       <Row>
-        <StarReviews reviewMeta={reviewMeta} />
+        <StarReviews />
       </Row>
       <div className='info ml-3'>
         <p>{productInfo.category}</p>
@@ -59,7 +58,6 @@ const noSaleStyle = {
 
 ProductPurchasePanel.propTypes = {
   setCurrentImage: PropTypes.func.isRequired,
-  reviewMeta: PropTypes.object.isRequired,
   currentStyleIdx: PropTypes.number.isRequired,
   setCurrentStyleIdx: PropTypes.func.isRequired,
   styles: PropTypes.object.isRequired,

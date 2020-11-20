@@ -12,14 +12,13 @@ import { useParams } from 'react-router-dom';
 const ProductDetails = (props) => {
   const [productInfo, setProductInfo] = useState([]);
   const [styleInfo, setStyleInfo] = useState(null);
-  const [reviewMeta, setReviewMeta] = useState(null);
   const [currentStyleIdx, setCurrentStyleIdx] = useState(0);
   const [images, setImages] = useState([]);
   const [currentImage, setCurrentImage] = useState(0);
   const { productId } = useParams();
 
   const productContext = useContext(ProductContext);
-  const { setProductId, getAllProductInfo } = productContext;
+  const { setProductId, getAllProductInfo, productData } = productContext;
 
   const getAllData = async () => {
     try {
@@ -30,7 +29,6 @@ const ProductDetails = (props) => {
       ]);
       await setProductInfo(returnedData[0].data);
       await setStyleInfo(returnedData[1].data);
-      await setReviewMeta(returnedData[2].data);
       await setImages(imageUrls.slice(0, returnedData[1].data.results.length));
     } catch (err) {
       console.error('Error at get all product data', err.message);
@@ -45,7 +43,7 @@ const ProductDetails = (props) => {
 
   return (
     <Container>
-      {styleInfo && styleInfo.results.length && (
+      {productData && styleInfo && styleInfo.results.length && (
         <Container>
           <Row className='mt-2'>
             <Col lg={8}>
@@ -59,19 +57,16 @@ const ProductDetails = (props) => {
               />
             </Col>
             <Col>
-              {reviewMeta && (
-                <ProductPurchasePanel
-                  productInfo={productInfo}
-                  reviewMeta={reviewMeta}
-                  styles={styleInfo}
-                  images={images}
-                  currentStyleIdx={currentStyleIdx}
-                  setCurrentStyleIdx={setCurrentStyleIdx}
-                  setCurrentImage={setCurrentImage}
-                  productId={productId}
-                  setCurrentImage={setCurrentImage}
-                />
-              )}
+              <ProductPurchasePanel
+                productInfo={productInfo}
+                styles={styleInfo}
+                images={images}
+                currentStyleIdx={currentStyleIdx}
+                setCurrentStyleIdx={setCurrentStyleIdx}
+                setCurrentImage={setCurrentImage}
+                productId={productId}
+                setCurrentImage={setCurrentImage}
+              />
             </Col>
           </Row>
           <Row>
