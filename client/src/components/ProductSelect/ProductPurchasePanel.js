@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Card, Row } from 'react-bootstrap';
 import StyleSelector from './StyleSelector';
 import AddToCart from './AddToCart';
 import StarReviews from './StarReviews';
+import ProductContext from '../../context/product/productContext';
 
-const ProductPurchasePanel = ({
-  reviewMeta,
-  styles,
-  currentStyleIdx,
-  setCurrentStyleIdx,
-  productId,
-  images,
-  setCurrentImage,
-  productInfo,
-}) => {
+const ProductPurchasePanel = ({}) => {
+  const productContext = useContext(ProductContext);
+  const {
+    styleInfo: styles,
+    currentStyleIdx,
+    setCurrentStyleIdx,
+    productInfo,
+  } = productContext;
+
   const {
     sale_price: salePrice,
     original_price: originalPrice,
@@ -25,7 +25,7 @@ const ProductPurchasePanel = ({
   return (
     <Card className='ml-3 h-100 p-1 ml-1'>
       <Row>
-        <StarReviews reviewMeta={reviewMeta} />
+        <StarReviews />
       </Row>
       <div className='info ml-3'>
         <p>{productInfo.category}</p>
@@ -45,14 +45,9 @@ const ProductPurchasePanel = ({
       <StyleSelector
         currentStyleIdx={currentStyleIdx}
         setCurrentStyleIdx={setCurrentStyleIdx}
-        images={images}
-        setCurrentImage={setCurrentImage}
         styles={styles}
       />
-      <AddToCart
-        style={styles.results[currentStyleIdx]}
-        productId={productId}
-      />
+      <AddToCart style={styles.results[currentStyleIdx]} />
     </Card>
   );
 };
@@ -61,15 +56,6 @@ const noSaleStyle = {
   color: 'black',
 };
 
-ProductPurchasePanel.propTypes = {
-  setCurrentImage: PropTypes.func.isRequired,
-  reviewMeta: PropTypes.object.isRequired,
-  currentStyleIdx: PropTypes.number.isRequired,
-  setCurrentStyleIdx: PropTypes.func.isRequired,
-  styles: PropTypes.object.isRequired,
-  productId: PropTypes.string.isRequired,
-  images: PropTypes.array.isRequired,
-  productInfo: PropTypes.object.isRequired,
-};
+ProductPurchasePanel.propTypes = {};
 
 export default ProductPurchasePanel;

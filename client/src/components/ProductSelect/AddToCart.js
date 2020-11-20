@@ -1,15 +1,20 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Row, Col, Button, Alert } from 'react-bootstrap';
+import { Form, Row, Button, Alert } from 'react-bootstrap';
 import axios from 'axios';
+import ProductContext from '../../context/product/productContext';
+
 //TODO: Reset Select size on page update
-const AddToCart = ({ style, productId }) => {
-  const selectSizeRef = useRef(null);
+const AddToCart = ({ style }) => {
   const [currentSize, setCurrentSize] = useState(null);
   const [currentStyleQty, setCurrentStyleQty] = useState(1);
   const [selectedQty, setSelectedQty] = useState(0);
   const [cart, setCart] = useState(null);
   const [showMessage, setShowMessage] = useState(false);
+  const selectSizeRef = useRef(null);
+
+  const productContext = useContext(ProductContext);
+  const { productId } = productContext;
 
   useEffect(() => {
     currentSize !== null && setShowMessage(false);
@@ -50,10 +55,11 @@ const AddToCart = ({ style, productId }) => {
             Select a size!
           </Alert>
         )}
-        <Row className='w-75 ml-2'>
+        <Row className='w-75 ml-2 mb-1'>
           <Form.Control
             as='select'
             size='sm'
+            className='mb-2'
             onChange={(e) => {
               setCurrentSize(e.target.value);
               setCurrentStyleQty(style.skus[e.target.value]);
@@ -114,7 +120,6 @@ const iconStyles = {
 
 AddToCart.propTypes = {
   style: PropTypes.object.isRequired,
-  productId: PropTypes.string.isRequired,
 };
 
 export default AddToCart;

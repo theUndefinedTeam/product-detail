@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Image, Carousel, Col } from 'react-bootstrap';
+import ProductContext from '../../context/product/productContext';
 import ThumbnailGallery from './ThumbnailGallery';
 import CustomCarousel from './CustomCarousel';
 
-const CarouselContainer = ({
-  currentImage,
-  setCurrentImage,
-  styles,
-  currentStyleIdx,
-  imageUrls,
-  setCurrentStyleIdx,
-}) => {
+const CarouselContainer = () => {
+  const productContext = useContext(ProductContext);
+  const {
+    images,
+    currentImage,
+    setCurrentImage,
+    currentStyleIdx,
+  } = productContext;
+
   return (
     <div
       style={{
@@ -20,37 +21,24 @@ const CarouselContainer = ({
         alignItems: 'center',
       }}>
       <CustomCarousel
-        src={imageUrls[currentImage].url}
-        style={{ maxHeight: '80vh' }}
-        styles={styles}
-        imageUrls={imageUrls}
+        imageUrls={images[currentStyleIdx]}
         currentImage={currentImage}
         setCurrentImage={setCurrentImage}
       />
       <ThumbnailGallery
-        styles={styles}
-        imageUrls={imageUrls}
+        imageUrls={images[currentStyleIdx]}
         currentImage={currentImage}
         setCurrentImage={setCurrentImage}
-        currentStyleIdx={currentStyleIdx}
-        setCurrentStyleIdx={setCurrentStyleIdx}
         style={thumbnailGalleryStyles}
       />
     </div>
   );
 };
-const carouselStyles = {
-  // boxShadow: '2px 3px 4px 2px #abb3ae',
-};
+
 const thumbnailGalleryStyles = {
   marginTop: '-100px',
 };
 
-CarouselContainer.propTypes = {
-  styles: PropTypes.array.isRequired,
-  currentStyleIdx: PropTypes.number.isRequired,
-  currentImage: PropTypes.number.isRequired,
-  setCurrentImage: PropTypes.func.isRequired,
-};
+CarouselContainer.propTypes = {};
 
 export default CarouselContainer;
