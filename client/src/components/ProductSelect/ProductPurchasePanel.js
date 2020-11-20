@@ -32,15 +32,17 @@ const ProductPurchasePanel = ({}) => {
         <p>{productInfo.category}</p>
         <h4>{productInfo.name}</h4>
         {/* Below line renders price and styles the text based on whether there is a sale */}
-        <div className='d-flex justify-content-between'>
-          {isSale && <span>${salePrice}</span>}
+        <div className='d-flex w-100 justify-content-between'>
           <span>
-            {isSale ? (
-              <strike className='ml-2 text-danger'>${originalPrice}</strike>
-            ) : (
-              `  $${originalPrice}`
-            )}{' '}
-          </span>{' '}
+            {isSale && <span>${salePrice}</span>}
+            <span>
+              {isSale ? (
+                <strike className='ml-2 text-danger'>${originalPrice}</strike>
+              ) : (
+                `  $${originalPrice}`
+              )}{' '}
+            </span>{' '}
+          </span>
           <SocialButtons />
         </div>
       </div>

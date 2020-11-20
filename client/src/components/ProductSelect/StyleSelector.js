@@ -6,6 +6,7 @@ import ProductContext from '../../context/product/productContext';
 const StyleSelector = ({ setCurrentStyleIdx, currentStyleIdx, styles }) => {
   const productContext = useContext(ProductContext);
   const { setCurrentImage, images } = productContext;
+
   //makes arrays of a length of 4 for creating maximum length
   const makeStylesArrays = (styleArr) => {
     let arr = [...styleArr];

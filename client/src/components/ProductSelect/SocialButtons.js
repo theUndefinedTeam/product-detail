@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-
+import ProductContext from '../../context/product/productContext';
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -13,12 +13,19 @@ import {
 } from 'react-share';
 
 const SocialButtons = (props) => {
+  const productContext = useContext(ProductContext);
+  const { images, currentStyleIdx, currentImage } = productContext;
+  console.log(images[currentStyleIdx][currentImage].url);
+
   return (
-    <div className='d-flex mr-2'>
+    <div className='d-flex mr-2 pull-right'>
       <FacebookShareButton className='mr-1'>
         <FacebookIcon size={18} />
       </FacebookShareButton>
-      <PinterestShareButton className='mr-1'>
+      <PinterestShareButton
+        media={images[currentStyleIdx][currentImage].url}
+        description='This is a super cool product'
+        className='mr-1'>
         <PinterestIcon size={18} />
       </PinterestShareButton>
       <TumblrShareButton className='mr-1'>
