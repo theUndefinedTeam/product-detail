@@ -1,12 +1,14 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable jsx-quotes */
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable no-return-assign */
+/* eslint-disable linebreak-style */
 import React, { useState, useEffect, useContext } from 'react';
-import PropTypes from 'prop-types';
-import Star from './Star';
 import './Star.css';
 import ProductContext from '../../context/product/productContext';
 // import getReviewPoints from '../../utils/getReviewPoints';
 
 const StarReviews = () => {
-  const [reviewPointArr, setReviewPointArr] = useState([]);
   const [fillPct, setFillPct] = useState(0);
 
   const productContext = useContext(ProductContext);
@@ -19,6 +21,7 @@ const StarReviews = () => {
   useEffect(() => {
     if (!Object.values(ratings).length) return;
     const totalPossibleStars =
+      // eslint-disable-next-line no-param-reassign
       Object.values(ratings).reduce((acc, num) => (acc += num)) * 5;
 
     const totalStarsReceived = Object.entries(ratings).reduce((acc, entry) => {
@@ -26,15 +29,16 @@ const StarReviews = () => {
       return acc;
     }, 0);
     const pctInteger = parseInt(
-      (totalStarsReceived / totalPossibleStars) * 100
+      (totalStarsReceived / totalPossibleStars) * 100,
+      10
     );
     setFillPct(`${pctInteger}%`);
   }, [ratings, reviewMeta]);
   return (
     <div className='d-inline-flex ml-4'>
       <span className='ratings'>
-        <div className='empty-stars'></div>
-        <div className='full-stars' style={{ width: fillPct }}></div>
+        <div className='empty-stars' />
+        <div className='full-stars' style={{ width: fillPct }} />
       </span>
       <a
         href='/#/1'
@@ -55,7 +59,5 @@ const StarReviews = () => {
     // </div>
   );
 };
-
-StarReviews.propTypes = {};
 
 export default StarReviews;
