@@ -10,7 +10,6 @@ const ProductPurchasePanel = ({
   styles,
   currentStyleIdx,
   setCurrentStyleIdx,
-  productId,
   images,
   setCurrentImage,
   productInfo,
@@ -49,10 +48,7 @@ const ProductPurchasePanel = ({
         setCurrentImage={setCurrentImage}
         styles={styles}
       />
-      <AddToCart
-        style={styles.results[currentStyleIdx]}
-        productId={productId}
-      />
+      <AddToCart style={styles.results[currentStyleIdx]} />
     </Card>
   );
 };
@@ -67,7 +63,6 @@ ProductPurchasePanel.propTypes = {
   currentStyleIdx: PropTypes.number.isRequired,
   setCurrentStyleIdx: PropTypes.func.isRequired,
   styles: PropTypes.object.isRequired,
-  productId: PropTypes.string.isRequired,
   images: PropTypes.array.isRequired,
   productInfo: PropTypes.object.isRequired,
 };

@@ -1,0 +1,3 @@
+export const GET_PRODUCT_INFO = 'GET_PRODUCT_INFO';
+export const PRODUCT_ERROR = 'PRODUCT_ERROR';
+export const SET_PRODUCT_ID = 'SET_PRODUCT_ID';

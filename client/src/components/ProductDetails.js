@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Container, Row, Col } from 'react-bootstrap';
 import CarouselContainer from './Gallery/CarouselContainer';
@@ -6,6 +6,7 @@ import ProductPurchasePanel from './ProductSelect/ProductPurchasePanel';
 import ProductInfo from './ProductInfo/ProductInfo';
 import ThumbnailGallery from './Gallery/ThumbnailGallery';
 import imageUrls from '../urlData/urls';
+import ProductContext from '../context/product/productContext';
 import { useParams } from 'react-router-dom';
 
 const ProductDetails = (props) => {
@@ -16,6 +17,9 @@ const ProductDetails = (props) => {
   const [images, setImages] = useState([]);
   const [currentImage, setCurrentImage] = useState(0);
   const { productId } = useParams();
+
+  const productContext = useContext(ProductContext);
+  const { setProductId, getAllProductInfo } = productContext;
 
   const getAllData = async () => {
     try {
@@ -35,7 +39,9 @@ const ProductDetails = (props) => {
 
   useEffect(() => {
     getAllData();
-  }, [productId]);
+    getAllProductInfo(productId);
+    setProductId(productId);
+  }, []);
 
   return (
     <Container>
