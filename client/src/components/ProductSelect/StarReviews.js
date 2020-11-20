@@ -10,6 +10,7 @@ const StarReviews = () => {
   const [fillPct, setFillPct] = useState(0);
 
   const productContext = useContext(ProductContext);
+
   const {
     reviewMeta,
     reviewMeta: { ratings },
@@ -55,9 +56,6 @@ const StarReviews = () => {
   );
 };
 
-// const starsStyle = { width: fillPct };
-StarReviews.propTypes = {
-  // reviewMeta: PropTypes.object.isRequired,
-};
+StarReviews.propTypes = {};
 
 export default StarReviews;

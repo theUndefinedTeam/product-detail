@@ -10,7 +10,6 @@ import ProductContext from '../context/product/productContext';
 import { useParams } from 'react-router-dom';
 
 const ProductDetails = (props) => {
-  const [productInfo, setProductInfo] = useState([]);
   const [styleInfo, setStyleInfo] = useState(null);
   const [currentStyleIdx, setCurrentStyleIdx] = useState(0);
   const [images, setImages] = useState([]);
@@ -18,7 +17,7 @@ const ProductDetails = (props) => {
   const { productId } = useParams();
 
   const productContext = useContext(ProductContext);
-  const { setProductId, getAllProductInfo, productData } = productContext;
+  const { setProductId, getAllProductInfo, productInfo } = productContext;
 
   const getAllData = async () => {
     try {
@@ -27,7 +26,6 @@ const ProductDetails = (props) => {
         axios.get(`http://52.26.193.201:3000/products/${productId}/styles`),
         axios.get(`http://52.26.193.201:3000/reviews/${productId}/meta`),
       ]);
-      await setProductInfo(returnedData[0].data);
       await setStyleInfo(returnedData[1].data);
       await setImages(imageUrls.slice(0, returnedData[1].data.results.length));
     } catch (err) {
@@ -43,7 +41,7 @@ const ProductDetails = (props) => {
 
   return (
     <Container>
-      {productData && styleInfo && styleInfo.results.length && (
+      {productInfo && styleInfo && styleInfo.results.length && (
         <Container>
           <Row className='mt-2'>
             <Col lg={8}>
