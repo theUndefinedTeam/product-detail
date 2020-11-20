@@ -13,9 +13,9 @@ const ProductDetails = (props) => {
   const [styleInfo, setStyleInfo] = useState(null);
   const [reviewMeta, setReviewMeta] = useState(null);
   const [currentStyleIdx, setCurrentStyleIdx] = useState(0);
-  const { productId } = useParams();
   const [images, setImages] = useState([]);
   const [currentImage, setCurrentImage] = useState(0);
+  const { productId } = useParams();
 
   const getAllData = async () => {
     try {
@@ -35,7 +35,7 @@ const ProductDetails = (props) => {
 
   useEffect(() => {
     getAllData();
-  }, []);
+  }, [productId]);
 
   return (
     <Container>
@@ -55,6 +55,7 @@ const ProductDetails = (props) => {
             <Col>
               {reviewMeta && (
                 <ProductPurchasePanel
+                  productInfo={productInfo}
                   reviewMeta={reviewMeta}
                   styles={styleInfo}
                   images={images}
