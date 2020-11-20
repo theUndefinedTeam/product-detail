@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
 import { Card, Row } from 'react-bootstrap';
 import StyleSelector from './StyleSelector';
 import AddToCart from './AddToCart';
 import StarReviews from './StarReviews';
+import ProductContext from '../../context/product/productContext';
 
-const ProductPurchasePanel = ({
-  styles,
-  currentStyleIdx,
-  setCurrentStyleIdx,
-  productInfo,
-}) => {
+const ProductPurchasePanel = ({}) => {
+  const productContext = useContext(ProductContext);
+  const {
+    styleInfo: styles,
+    currentStyleIdx,
+    setCurrentStyleIdx,
+    productInfo,
+  } = productContext;
+
   const {
     sale_price: salePrice,
     original_price: originalPrice,
@@ -50,13 +53,6 @@ const ProductPurchasePanel = ({
 
 const noSaleStyle = {
   color: 'black',
-};
-
-ProductPurchasePanel.propTypes = {
-  currentStyleIdx: PropTypes.number.isRequired,
-  setCurrentStyleIdx: PropTypes.func.isRequired,
-  styles: PropTypes.object.isRequired,
-  productInfo: PropTypes.object.isRequired,
 };
 
 export default ProductPurchasePanel;
