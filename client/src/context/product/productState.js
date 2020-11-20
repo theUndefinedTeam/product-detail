@@ -54,7 +54,7 @@ const ProductState = (props) => {
         styleInfo: state.styleInfo,
         reviewMeta: state.reviewMeta,
         // currentStyleIdx: state.currentStyleIdx,
-        // images: state.images,
+        images: state.images,
         // currentImage: state.currentImage,
         productId: state.productId,
         setProductId,

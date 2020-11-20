@@ -1,40 +1,27 @@
 import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
 import { Container, Row, Col } from 'react-bootstrap';
 import CarouselContainer from './Gallery/CarouselContainer';
 import ProductPurchasePanel from './ProductSelect/ProductPurchasePanel';
 import ProductInfo from './ProductInfo/ProductInfo';
-import ThumbnailGallery from './Gallery/ThumbnailGallery';
 import imageUrls from '../urlData/urls';
 import ProductContext from '../context/product/productContext';
 import { useParams } from 'react-router-dom';
 
-const ProductDetails = (props) => {
-  const [styleInfo, setStyleInfo] = useState(null);
+const ProductDetails = () => {
   const [currentStyleIdx, setCurrentStyleIdx] = useState(0);
-  const [images, setImages] = useState([]);
   const [currentImage, setCurrentImage] = useState(0);
+
   const { productId } = useParams();
-
   const productContext = useContext(ProductContext);
-  const { setProductId, getAllProductInfo, productInfo } = productContext;
-
-  const getAllData = async () => {
-    try {
-      const returnedData = await axios.all([
-        axios.get(`http://52.26.193.201:3000/products/${productId}`),
-        axios.get(`http://52.26.193.201:3000/products/${productId}/styles`),
-        axios.get(`http://52.26.193.201:3000/reviews/${productId}/meta`),
-      ]);
-      await setStyleInfo(returnedData[1].data);
-      await setImages(imageUrls.slice(0, returnedData[1].data.results.length));
-    } catch (err) {
-      console.error('Error at get all product data', err.message);
-    }
-  };
+  const {
+    setProductId,
+    getAllProductInfo,
+    productInfo,
+    styleInfo,
+    images,
+  } = productContext;
 
   useEffect(() => {
-    getAllData();
     getAllProductInfo(productId);
     setProductId(productId);
   }, []);
