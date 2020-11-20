@@ -7,6 +7,7 @@ import {
   GET_PRODUCT_INFO,
   SET_PRODUCT_ID,
   SET_CURRENT_IMAGE,
+  SET_CURRENT_STYLE_IDX,
 } from '../types';
 import axios from 'axios';
 
@@ -15,7 +16,7 @@ const ProductState = (props) => {
     productInfo: null,
     styleInfo: null,
     reviewMeta: null,
-    // currentStyleIdx: 0,
+    currentStyleIdx: 0,
     images: imageUrls,
     currentImage: 0,
     productId: 1,
@@ -58,16 +59,25 @@ const ProductState = (props) => {
       payload: idx,
     });
   };
+
+  const setCurrentStyleIdx = (idx) => {
+    dispatch({
+      type: SET_CURRENT_STYLE_IDX,
+      payload: idx,
+    });
+  };
+
   return (
     <ProductContext.Provider
       value={{
         productInfo: state.productInfo,
         styleInfo: state.styleInfo,
         reviewMeta: state.reviewMeta,
-        // currentStyleIdx: state.currentStyleIdx,
+        currentStyleIdx: state.currentStyleIdx,
         images: state.images,
         currentImage: state.currentImage,
         productId: state.productId,
+        setCurrentStyleIdx,
         setCurrentImage,
         setProductId,
         getAllProductInfo,

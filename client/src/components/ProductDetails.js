@@ -7,16 +7,19 @@ import ProductContext from '../context/product/productContext';
 import { useParams } from 'react-router-dom';
 
 const ProductDetails = () => {
-  const [currentStyleIdx, setCurrentStyleIdx] = useState(0);
+  // const [currentStyleIdx, setCurrentStyleIdx] = useState(0);
 
   const { productId } = useParams();
   const productContext = useContext(ProductContext);
+
   const {
     setProductId,
     getAllProductInfo,
     productInfo,
     styleInfo,
     images,
+    currentStyleIdx,
+    setCurrentStyleIdx,
   } = productContext;
 
   useEffect(() => {
@@ -30,11 +33,7 @@ const ProductDetails = () => {
         <Container>
           <Row className='mt-2'>
             <Col lg={8}>
-              <CarouselContainer
-                currentStyleIdx={currentStyleIdx}
-                imageUrls={images[currentStyleIdx]}
-                setCurrentStyleIdx={setCurrentStyleIdx}
-              />
+              <CarouselContainer />
             </Col>
             <Col>
               <ProductPurchasePanel

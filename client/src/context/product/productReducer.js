@@ -3,6 +3,7 @@ import {
   PRODUCT_ERROR,
   GET_PRODUCT_INFO,
   SET_CURRENT_IMAGE,
+  SET_CURRENT_STYLE_IDX,
 } from '../types';
 
 export default (state, action) => {
@@ -27,6 +28,11 @@ export default (state, action) => {
       return {
         ...state,
         currentImage: payload,
+      };
+    case SET_CURRENT_STYLE_IDX:
+      return {
+        ...state,
+        currentStyleIdx: payload,
       };
     case PRODUCT_ERROR:
       console.error('PRODUCT ERROR', payload);

@@ -4,15 +4,15 @@ import ProductContext from '../../context/product/productContext';
 import ThumbnailGallery from './ThumbnailGallery';
 import CustomCarousel from './CustomCarousel';
 
-const CarouselContainer = ({
-  styles,
-  currentStyleIdx,
-  imageUrls,
-  setCurrentStyleIdx,
-}) => {
+const CarouselContainer = () => {
   const productContext = useContext(ProductContext);
-  const { images, currentImage, setCurrentImage } = productContext;
-  console.log({ images, imageUrls });
+  const {
+    images,
+    currentImage,
+    setCurrentImage,
+    currentStyleIdx,
+  } = productContext;
+
   return (
     <div
       style={{
@@ -21,18 +21,15 @@ const CarouselContainer = ({
         alignItems: 'center',
       }}>
       <CustomCarousel
-        src={imageUrls[currentImage].url}
         style={{ maxHeight: '80vh' }}
-        imageUrls={imageUrls}
+        imageUrls={images[currentStyleIdx]}
         currentImage={currentImage}
         setCurrentImage={setCurrentImage}
       />
       <ThumbnailGallery
-        imageUrls={imageUrls}
+        imageUrls={images[currentStyleIdx]}
         currentImage={currentImage}
         setCurrentImage={setCurrentImage}
-        currentStyleIdx={currentStyleIdx}
-        setCurrentStyleIdx={setCurrentStyleIdx}
         style={thumbnailGalleryStyles}
       />
     </div>
@@ -43,8 +40,6 @@ const thumbnailGalleryStyles = {
   marginTop: '-100px',
 };
 
-CarouselContainer.propTypes = {
-  currentStyleIdx: PropTypes.number.isRequired,
-};
+CarouselContainer.propTypes = {};
 
 export default CarouselContainer;
