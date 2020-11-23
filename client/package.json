@@ -8,9 +8,9 @@
   },
   "scripts": {
     "test": "jest",
-    "start": "process.env.NODE_ENV === 'production' parcel ./index.html",
+    "start": "parcel build ./index.html",
     "dev": "parcel ./index.html",
-    "build": "parcel ./index.html",
+    "build": "parcel build ./index.html",
     "server": "nodemon ./server/index.js"
   },
   "keywords": [],

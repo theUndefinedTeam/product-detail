@@ -77,7 +77,7 @@ const chevronLeftStyles = {
 const thumbnailGalleryStyles = {
   height: '80px',
   position: 'relative',
-  marginTop: '-105px',
+  marginTop: '-80px',
   display: 'flex',
   alignContent: 'space-between',
   alignItems: 'center',

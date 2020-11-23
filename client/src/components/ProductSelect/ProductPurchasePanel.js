@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Card, Row } from 'react-bootstrap';
+import { Card, Row, Col } from 'react-bootstrap';
 import StyleSelector from './StyleSelector';
 import AddToCart from './AddToCart';
 import StarReviews from './StarReviews';
@@ -24,34 +24,37 @@ const ProductPurchasePanel = ({}) => {
   const isSale = Number(salePrice) > 0;
 
   return (
-    <Card className='ml-3 h-100 p-1 ml-1'>
-      <Row>
+    <Card className='ml-4 h-100 p-1'>
+      <div className='h-100 d-flex flex-column'>
         <StarReviews />
-      </Row>
-      <div className='info ml-3'>
-        <p>{productInfo.category}</p>
-        <h4>{productInfo.name}</h4>
-        {/* Below line renders price and styles the text based on whether there is a sale */}
-        <div className='d-flex w-100 justify-content-between'>
-          <span>
-            {isSale && <span>${salePrice}</span>}
+
+        <div className='info ml-3 mt-2'>
+          <p>{productInfo.category}</p>
+          <h3>{productInfo.name}</h3>
+          {/* Below line renders price and styles the text based on whether there is a sale */}
+          <div className='d-flex w-75 justify-content-between'>
             <span>
-              {isSale ? (
-                <strike className='ml-2 text-danger'>${originalPrice}</strike>
-              ) : (
-                `  $${originalPrice}`
-              )}{' '}
-            </span>{' '}
-          </span>
-          <SocialButtons />
+              {isSale && <span>${salePrice}</span>}
+              <span>
+                {isSale ? (
+                  <strike className='ml-2 text-danger'>${originalPrice}</strike>
+                ) : (
+                  `  $${originalPrice}`
+                )}{' '}
+              </span>{' '}
+            </span>
+            <SocialButtons />
+          </div>
         </div>
       </div>
-      <StyleSelector
-        currentStyleIdx={currentStyleIdx}
-        setCurrentStyleIdx={setCurrentStyleIdx}
-        styles={styles}
-      />
-      <AddToCart style={styles.results[currentStyleIdx]} />
+      <Col>
+        <StyleSelector
+          currentStyleIdx={currentStyleIdx}
+          setCurrentStyleIdx={setCurrentStyleIdx}
+          styles={styles}
+        />
+        <AddToCart style={styles.results[currentStyleIdx]} />
+      </Col>
     </Card>
   );
 };

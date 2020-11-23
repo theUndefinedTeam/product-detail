@@ -35,7 +35,7 @@ const StarReviews = () => {
     setFillPct(`${pctInteger}%`);
   }, [ratings, reviewMeta]);
   return (
-    <div className='d-inline-flex ml-4'>
+    <div className='d-inline-flex ml-3'>
       <span className='ratings'>
         <div className='empty-stars' />
         <div className='full-stars' style={{ width: fillPct }} />

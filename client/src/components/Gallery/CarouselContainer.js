@@ -25,19 +25,19 @@ const CarouselContainer = () => {
         currentImage={currentImage}
         setCurrentImage={setCurrentImage}
       />
-      <ThumbnailGallery
+      {/* <ThumbnailGallery
         imageUrls={images[currentStyleIdx]}
         currentImage={currentImage}
         setCurrentImage={setCurrentImage}
-        style={thumbnailGalleryStyles}
-      />
+        // style={thumbnailGalleryStyles}
+      /> */}
     </div>
   );
 };
 
-const thumbnailGalleryStyles = {
-  marginTop: '-100px',
-};
+// const thumbnailGalleryStyles = {
+//   marginTop: '-100px',
+// };
 
 CarouselContainer.propTypes = {};
 

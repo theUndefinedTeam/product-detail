@@ -9,17 +9,21 @@ import { useParams } from 'react-router-dom';
 const ProductDetails = () => {
   const { productId } = useParams();
   const productContext = useContext(ProductContext);
-  const { setProductId, getAllProductInfo, productInfo } = productContext;
-
+  const {
+    setProductId,
+    getAllProductInfo,
+    productInfo,
+    images,
+  } = productContext;
   useEffect(() => {
     getAllProductInfo(productId);
     setProductId(productId);
-  }, []);
+  }, [productId]);
 
   return (
-    <Container>
+    <>
       {productInfo && (
-        <Container>
+        <Col>
           <Row className='mt-2'>
             <Col lg={8}>
               <CarouselContainer />
@@ -29,13 +33,13 @@ const ProductDetails = () => {
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col md={8}>
               <ProductInfo />
             </Col>
           </Row>
-        </Container>
+        </Col>
       )}
-    </Container>
+    </>
   );
 };
 

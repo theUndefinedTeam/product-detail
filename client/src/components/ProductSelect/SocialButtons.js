@@ -17,24 +17,23 @@ import {
 const SocialButtons = (props) => {
   const productContext = useContext(ProductContext);
   const { images, currentStyleIdx, currentImage } = productContext;
-  console.log(images[currentStyleIdx][currentImage].url);
 
   return (
-    <div className='d-flex mr-2 pull-right'>
+    <div className='d-flex mr-4 pull-right'>
       <FacebookShareButton className='mr-1'>
-        <FacebookIcon size={18} />
+        <FacebookIcon size={22} />
       </FacebookShareButton>
       <PinterestShareButton
         media={images[currentStyleIdx][currentImage].url}
         description='This is a super cool product'
         className='mr-1'>
-        <PinterestIcon size={18} />
+        <PinterestIcon size={22} />
       </PinterestShareButton>
       <TumblrShareButton className='mr-1'>
-        <TumblrIcon size={18} />
+        <TumblrIcon size={22} />
       </TumblrShareButton>
       <EmailShareButton className='mr-1'>
-        <EmailIcon size={18} />
+        <EmailIcon size={22} />
       </EmailShareButton>
     </div>
   );

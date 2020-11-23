@@ -19,13 +19,13 @@ const ThumbnailImage = ({ image, imgIdx, currentImage, setCurrentImage }) => {
   );
 };
 const styles = {
-  maxWidth: '90px',
+  maxWidth: '70px',
   transition: 'all 0.3s',
   margin: '2rem',
 };
 const highLightStyle = {
-  boxShadow: '1px 2px 2px 1px #CCC',
-  maxWidth: '90px',
+  boxShadow: '1px 1px 1px 1px #CCC',
+  maxWidth: '70px',
   transition: 'all 0.08s',
   scale: '1.05',
 };

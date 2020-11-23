@@ -9,6 +9,7 @@ import {
   SET_CURRENT_IMAGE,
   SET_CURRENT_STYLE_IDX,
 } from '../types';
+
 import axios from 'axios';
 
 const ProductState = (props) => {
@@ -19,7 +20,7 @@ const ProductState = (props) => {
     currentStyleIdx: 0,
     images: imageUrls,
     currentImage: 0,
-    productId: 1,
+    productId: 2,
   };
 
   const [state, dispatch] = useReducer(productReducer, initialState);

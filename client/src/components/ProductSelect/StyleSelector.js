@@ -24,6 +24,9 @@ const StyleSelector = ({ setCurrentStyleIdx, currentStyleIdx, styles }) => {
 
   let styleCounter = -1;
   const thumbnailArrays = makeStylesArrays(images);
+
+  console.log({ images, styles });
+  console.log('thumbnailArrays', thumbnailArrays);
   return (
     <Col className='w-100'>
       <h6>
@@ -41,7 +44,7 @@ const StyleSelector = ({ setCurrentStyleIdx, currentStyleIdx, styles }) => {
                   src={imageUrl}
                   roundedCircle
                   className='p3 ml-2 mb-2'
-                  style={{ width: '20%', border: '2px solid white' }}
+                  style={{ width: '20%' }}
                   onClick={(e) => handleStyleSelect(e)}
                   alt='product style'
                 />
