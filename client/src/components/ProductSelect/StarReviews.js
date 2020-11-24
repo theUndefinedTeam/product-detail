@@ -1,8 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable jsx-quotes */
-/* eslint-disable react/jsx-filename-extension */
-/* eslint-disable no-return-assign */
-/* eslint-disable linebreak-style */
 import React, { useState, useEffect, useContext } from 'react';
 import './Star.css';
 import ProductContext from '../../context/product/productContext';
@@ -21,7 +16,6 @@ const StarReviews = () => {
   useEffect(() => {
     if (!Object.values(ratings).length) return;
     const totalPossibleStars =
-      // eslint-disable-next-line no-param-reassign
       Object.values(ratings).reduce((acc, num) => (acc += num)) * 5;
 
     const totalStarsReceived = Object.entries(ratings).reduce((acc, entry) => {

@@ -73,22 +73,3 @@ StyleSelector.propTypes = {
 };
 
 export default StyleSelector;
-
-//pass in "results", currentStyleIdx
-//map over results and place in thumbnails- each picture will link to a different style
-//on click of a thumbnail, change currentStyleIdx
-
-/*
-Below the product information, the user should be presented all the styles of the product and have the ability to toggle between them.  Each style should be displayed as a thumbnail.  
-
-All styles should display for the current product at all times.  There is no limit to the number of styles a product can have.  The thumbnails should appear in rows of 4.  
-
-The current selection should be indicated within the list by the overlay of a checkmark on top of the thumbnail for that style.   Additionally, the title for that style should appear typed out in full above the thumbnail list.
-
-A user will be able to change the selected style by clicking on the thumbnail displaying that style.   Clicking on the thumbnail for the currently selected style will have no impact.
-
-By default, the style selected will be the first in the list.  
-A product will always have at least one style. 
-Only one style can be selected at a time.  A style must be selected at all times.
-
-*/

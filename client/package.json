@@ -8,9 +8,9 @@
   },
   "scripts": {
     "test": "jest",
-    "start": "parcel build ./index.html",
+    "start": "parcel ./index.html --hmr-port 1235",
     "dev": "parcel ./index.html",
-    "build": "parcel build ./index.html",
+    "build": "parcel ./index.html",
     "server": "nodemon ./server/index.js"
   },
   "keywords": [],
