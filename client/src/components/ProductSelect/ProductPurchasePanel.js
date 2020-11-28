@@ -24,16 +24,25 @@ const ProductPurchasePanel = ({}) => {
   const isSale = Number(salePrice) > 0;
 
   return (
-    <Card className='ml-4 h-100 p-1'>
+    <Card className='ml-4 h-100 p-1 w-100' style={{ borderStyle: 'none' }}>
       <div className='h-100 d-flex flex-column'>
         <StarReviews />
 
-        <div className='info ml-3 mt-2'>
-          <p>{productInfo.category}</p>
+        <div className='info ml-3 mt-4'>
+          <p>
+            <span style={{ fontWeight: '700', fontSize: '18px' }}>
+              Category {' > '}
+            </span>
+            {productInfo.category}
+          </p>
           <h3>{productInfo.name}</h3>
           {/* Below line renders price and styles the text based on whether there is a sale */}
           <div className='d-flex w-75 justify-content-between'>
-            <span>
+            <span
+              style={{
+                fontSize: '20px',
+                fontWeight: '700',
+              }}>
               {isSale && <span>${salePrice}</span>}
               <span>
                 {isSale ? (

@@ -2,9 +2,8 @@ import React, { useState, useEffect, useRef, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Row, Button, Alert } from 'react-bootstrap';
 import axios from 'axios';
-import ProductContext from '../../context/product/productContext';
 import { useParams } from 'react-router-dom';
-//TODO: Reset Select size on page update
+
 const AddToCart = ({ style }) => {
   const [currentSize, setCurrentSize] = useState(null);
   const [currentStyleQty, setCurrentStyleQty] = useState(1);
@@ -12,8 +11,6 @@ const AddToCart = ({ style }) => {
   const [cart, setCart] = useState(null);
   const [showMessage, setShowMessage] = useState(false);
   const selectSizeRef = useRef(null);
-
-  // const productContext = useContext(ProductContext);
   const { productId } = useParams();
 
   useEffect(() => {

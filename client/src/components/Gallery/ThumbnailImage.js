@@ -8,12 +8,10 @@ const ThumbnailImage = ({ image, imgIdx, currentImage, setCurrentImage }) => {
       <Image
         src={image}
         style={currentImage !== imgIdx ? styles : highLightStyle}
-        // style={currentStyleIdx !== imgIdx ? styles : highLightStyle}
         alt='product-image'
         rounded
         className='m-1'
         onClick={() => setCurrentImage(imgIdx)}
-        // onClick={() => setCurrentStyleIdx(imgIdx)}
       />
     </div>
   );
@@ -26,8 +24,8 @@ const styles = {
 const highLightStyle = {
   boxShadow: '1px 1px 1px 1px #CCC',
   maxWidth: '70px',
-  transition: 'all 0.08s',
-  scale: '1.05',
+  transition: 'all 0.3s',
+  scale: '1.1',
 };
 
 ThumbnailImage.propTypes = {

@@ -28,7 +28,7 @@ const StyleSelector = ({ setCurrentStyleIdx, currentStyleIdx, styles }) => {
   console.log({ images, styles });
   console.log('thumbnailArrays', thumbnailArrays);
   return (
-    <Col className='w-100'>
+    <Col className='w-100 mb-4'>
       <h6>
         Style {'>'} {styles.results[currentStyleIdx].name}
       </h6>
@@ -50,7 +50,9 @@ const StyleSelector = ({ setCurrentStyleIdx, currentStyleIdx, styles }) => {
                 />
                 {currentStyleIdx === styleCounter && (
                   <span>
-                    <i className='fas fa-check-circle' styles={checkStyles}></i>
+                    <i
+                      className='fas fa-check-circle'
+                      styles={{ fontSize: '2rem' }}></i>
                   </span>
                 )}
               </Fragment>

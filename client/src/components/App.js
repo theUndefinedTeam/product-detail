@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { HashRouter, Switch, Route } from 'react-router-dom';

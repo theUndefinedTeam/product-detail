@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './Star.css';
 import ProductContext from '../../context/product/productContext';
-// import getReviewPoints from '../../utils/getReviewPoints';
 
 const StarReviews = () => {
   const [fillPct, setFillPct] = useState(0);
@@ -46,11 +45,6 @@ const StarReviews = () => {
         Read all Reviews
       </a>
     </div>
-    // <div>
-    //   {reviewPointArr.map((points, i) => (
-    //     <Star key={i} starPoints={points} />
-    //   ))}
-    // </div>
   );
 };
 

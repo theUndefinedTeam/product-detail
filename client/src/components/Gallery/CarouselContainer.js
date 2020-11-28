@@ -1,9 +1,6 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 import ProductContext from '../../context/product/productContext';
-import ThumbnailGallery from './ThumbnailGallery';
 import CustomCarousel from './CustomCarousel';
-
 const CarouselContainer = () => {
   const productContext = useContext(ProductContext);
   const {
@@ -25,19 +22,9 @@ const CarouselContainer = () => {
         currentImage={currentImage}
         setCurrentImage={setCurrentImage}
       />
-      {/* <ThumbnailGallery
-        imageUrls={images[currentStyleIdx]}
-        currentImage={currentImage}
-        setCurrentImage={setCurrentImage}
-        // style={thumbnailGalleryStyles}
-      /> */}
     </div>
   );
 };
-
-// const thumbnailGalleryStyles = {
-//   marginTop: '-100px',
-// };
 
 CarouselContainer.propTypes = {};
 

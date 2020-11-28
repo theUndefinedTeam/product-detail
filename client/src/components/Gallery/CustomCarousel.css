@@ -1,12 +1,21 @@
-#carousel {
+.carousel {
   display: flex;
   align-items: center;
+  justify-items: center;
+  margin-left: -50px;
 }
-#carousel:hover {
+.carousel:hover {
   cursor: zoom-in;
+}
+.carousel-expanded {
+  display: flex;
+  align-items: center;
+  position: relative;
+  left: 50%;
 }
 .slide {
   max-width: 100%;
+  position: 'relative';
 }
 /* i. {
   font-size: 4rem;
@@ -38,8 +47,27 @@
 }
 img.expanded {
   height: 100vh;
-  top: 50;
-  left: 50;
+
   z-index: 99;
   cursor: zoom-out;
+}
+
+/*MAGNIFIER CONTAINER*/
+* {
+  box-sizing: border-box;
+}
+
+.img-magnifier-container {
+  position: relative;
+}
+
+.img-magnifier-glass {
+  position: absolute;
+  border: 1px solid #000;
+  border-radius: 50%;
+  cursor: none;
+  z-index: 1000;
+  /*Set the size of the magnifier glass:*/
+  width: 100px;
+  height: 100px;
 }

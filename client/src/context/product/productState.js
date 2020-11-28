@@ -9,7 +9,6 @@ import {
   SET_CURRENT_IMAGE,
   SET_CURRENT_STYLE_IDX,
 } from '../types';
-
 import axios from 'axios';
 
 const ProductState = (props) => {
