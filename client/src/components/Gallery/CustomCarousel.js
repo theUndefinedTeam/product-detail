@@ -39,23 +39,6 @@ const CustomCarousel = ({ currentImage, setCurrentImage, imageUrls }) => {
             className='slide'
             id='myimage'
             src={imageUrls[currentImage].url}
-            // onClick={(e) => {
-            //   if (expandedView) {
-            //     magnify(myimage, 10);
-            //     carouselRef.current.classList.remove('carousel');
-            //     carouselRef.current.classList.add('carousel-expanded');
-            //     e.target.classList.add('expanded');
-            //     e.target.classList.remove('slide');
-            //     toggleExpandedView(!expandedView);
-            //   } else {
-            //     carouselRef.current.classList.remove('carousel-expanded');
-            //     carouselRef.current.classList.add('carousel');
-            //     e.target.classList.remove('expanded');
-            //     e.target.classList.add('slide');
-            //     toggleExpandedView(!expandedView);
-            //   }
-            // }}
-            // onClick={() => toggleExpandedView(!expandedView)}
             rounded
           />
         )}
@@ -64,10 +47,10 @@ const CustomCarousel = ({ currentImage, setCurrentImage, imageUrls }) => {
             {...{
               smallImage: {
                 alt: 'Wristwatch by Ted Baker London',
-                isFluidWidth: true,
+                // isFluidWidth: true,
                 src: imageUrls[currentImage].url,
-                width: 1500,
-                height: 1000,
+                width: 3000,
+                height: 1500,
                 enlargedImagePosition: 'over',
               },
               largeImage: {
@@ -77,8 +60,7 @@ const CustomCarousel = ({ currentImage, setCurrentImage, imageUrls }) => {
                 height: 1000,
               },
             }}
-            style={{ zIndex: '80' }}
-            // onClick={() => toggleExpandedView(!expandedView)}
+            style={{ zIndex: '80', display: 'flex' }}
           />
         )}
         <span>

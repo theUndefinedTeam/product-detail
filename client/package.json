@@ -10,7 +10,7 @@
     "test": "jest",
     "start": "parcel ./index.html --hmr-port 1235",
     "dev": "parcel ./index.html",
-    "build": "parcel build dist/index.html --public-url ./",
+    "build": "parcel build ./index.html --public-url ./",
     "server": "nodemon ./server/index.js"
   },
   "keywords": [],
