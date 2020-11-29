@@ -11,7 +11,11 @@
     "start": "parcel ./index.html --hmr-port 1235",
     "dev": "parcel ./index.html",
     "build": "parcel build ./index.html --public-url ./",
-    "server": "nodemon ./server/index.js"
+    "server": "nodemon ./server/index.js",
+    "webpack-build": "webpack --mode production",
+    "react-dev": "webpack -d --watch",
+    "live-start": "live-server ./dist",
+    "wdev": "concurrently \"npm run react-dev\" \"npm run live-start\""
   },
   "keywords": [],
   "author": "",

@@ -14,7 +14,7 @@ import {
   TumblrIcon,
 } from 'react-share';
 
-const SocialButtons = (props) => {
+const SocialButtons = () => {
   const productContext = useContext(ProductContext);
   const { images, currentStyleIdx, currentImage } = productContext;
 

@@ -71,7 +71,6 @@ const checkStyles = {
 StyleSelector.propTypes = {
   styles: PropTypes.object.isRequired,
   currentStyleIdx: PropTypes.number.isRequired,
-  setCurrentStyleIdx: PropTypes.func.isRequired,
 };
 
 export default StyleSelector;

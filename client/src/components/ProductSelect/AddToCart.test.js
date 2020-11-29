@@ -1,6 +1,7 @@
 import React from 'react';
 import AddToCart from './AddToCart';
 import { cleanup, render, screen } from '@testing-library/react';
+import { useParams } from 'react-router-dom';
 import '@testing-library/jest-dom';
 
 describe('AddToCart component tests', () => {

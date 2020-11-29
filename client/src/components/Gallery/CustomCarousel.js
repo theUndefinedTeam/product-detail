@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import './CustomCarousel.css';
 import { Image } from 'react-bootstrap';
 import ThumbnailGallery from './ThumbnailGallery';
 import magnify from './imageMagnifier';
