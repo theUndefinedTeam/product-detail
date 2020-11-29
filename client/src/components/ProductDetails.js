@@ -15,6 +15,7 @@ const ProductDetails = () => {
     productInfo,
     images,
   } = productContext;
+
   useEffect(() => {
     getAllProductInfo(productId);
     setProductId(productId);

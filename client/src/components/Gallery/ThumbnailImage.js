@@ -6,6 +6,7 @@ const ThumbnailImage = ({ image, imgIdx, currentImage, setCurrentImage }) => {
   return (
     <div>
       <Image
+        loading='lazy'
         src={image}
         style={currentImage !== imgIdx ? styles : highLightStyle}
         alt='product-image'

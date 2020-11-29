@@ -2,8 +2,12 @@ import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Image } from 'react-bootstrap';
 import ThumbnailGallery from './ThumbnailGallery';
-import magnify from './imageMagnifier';
 import ReactImageMagnify from 'react-image-magnify';
+import {
+  faChevronRight,
+  faChevronLeft,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const CustomCarousel = ({ currentImage, setCurrentImage, imageUrls }) => {
   const [expandedView, toggleExpandedView] = useState(false);
@@ -26,16 +30,18 @@ const CustomCarousel = ({ currentImage, setCurrentImage, imageUrls }) => {
         className='carousel img-magnifier-container'
         ref={carouselRef}
         onClick={(e) =>
-          !e.target.classList.contains('fas') &&
+          !e.target.classList.contains('chevron') &&
           toggleExpandedView(!expandedView)
         }>
-        <i
-          className='fas fa-chevron-left'
+        <FontAwesomeIcon
+          icon={faChevronLeft}
+          className='chevron'
           onClick={() => handleChevron('prev')}
         />
         {!expandedView && (
           <Image
-            className='slide'
+            loading='lazy'
+            className='slide '
             id='myimage'
             src={imageUrls[currentImage].url}
             rounded
@@ -46,7 +52,6 @@ const CustomCarousel = ({ currentImage, setCurrentImage, imageUrls }) => {
             {...{
               smallImage: {
                 alt: 'Wristwatch by Ted Baker London',
-                // isFluidWidth: true,
                 src: imageUrls[currentImage].url,
                 width: 750,
                 height: 500,
@@ -63,14 +68,16 @@ const CustomCarousel = ({ currentImage, setCurrentImage, imageUrls }) => {
           />
         )}
         <span>
-          <i
-            className='fas fa-chevron-right'
+          <FontAwesomeIcon
+            icon={faChevronRight}
+            className='chevron'
             onClick={() => handleChevron('next')}
           />
         </span>
       </div>
 
       <ThumbnailGallery
+        className='chevron'
         imageUrls={imageUrls}
         currentImage={currentImage}
         setCurrentImage={setCurrentImage}

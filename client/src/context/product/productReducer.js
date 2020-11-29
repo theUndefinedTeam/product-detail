@@ -17,6 +17,7 @@ export default (state, action) => {
         productId: payload,
       };
     case GET_PRODUCT_INFO:
+      document.title = payload[0].data.name;
       return {
         ...state,
         productInfo: payload[0].data,
