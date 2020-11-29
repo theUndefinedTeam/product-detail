@@ -49,8 +49,8 @@ const CustomCarousel = ({ currentImage, setCurrentImage, imageUrls }) => {
                 alt: 'Wristwatch by Ted Baker London',
                 // isFluidWidth: true,
                 src: imageUrls[currentImage].url,
-                width: 3000,
-                height: 1500,
+                width: 750,
+                height: 500,
                 enlargedImagePosition: 'over',
               },
               largeImage: {

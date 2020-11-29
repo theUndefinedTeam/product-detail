@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import './Star.css';
 import ProductContext from '../../context/product/productContext';
 
 const StarReviews = () => {

@@ -1,6 +1,5 @@
 .ratings {
   position: relative;
-  /* display: flex; */
   vertical-align: middle;
   display: inline-block;
   color: #b1b1b1;
@@ -33,4 +32,3 @@
     color: #ecbe24;
   }
 }
-/* IE */
