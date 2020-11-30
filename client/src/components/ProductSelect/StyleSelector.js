@@ -2,6 +2,8 @@ import React, { Fragment, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Col, Row, Image } from 'react-bootstrap';
 import ProductContext from '../../context/product/productContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 const StyleSelector = ({ setCurrentStyleIdx, currentStyleIdx, styles }) => {
   const productContext = useContext(ProductContext);
@@ -48,9 +50,7 @@ const StyleSelector = ({ setCurrentStyleIdx, currentStyleIdx, styles }) => {
                 />
                 {currentStyleIdx === styleCounter && (
                   <span>
-                    <i
-                      className='fas fa-check-circle'
-                      styles={{ fontSize: '2rem' }}></i>
+                    <FontAwesomeIcon icon={faCheckCircle} />
                   </span>
                 )}
               </Fragment>
