@@ -45,6 +45,7 @@ const CustomCarousel = ({ currentImage, setCurrentImage, imageUrls }) => {
             id='myimage'
             src={imageUrls[currentImage].url}
             rounded
+            alt={document.title}
           />
         )}
         {expandedView && (
@@ -64,6 +65,7 @@ const CustomCarousel = ({ currentImage, setCurrentImage, imageUrls }) => {
                 height: 1000,
               },
             }}
+            alt={document.title}
             style={{ zIndex: '80', display: 'flex' }}
           />
         )}
