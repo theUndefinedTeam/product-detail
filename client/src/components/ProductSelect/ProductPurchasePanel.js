@@ -1,27 +1,26 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
-import { Card, Row, Col } from 'react-bootstrap';
+import { Card, Col } from 'react-bootstrap';
 import StyleSelector from './StyleSelector';
 import AddToCart from './AddToCart';
 import StarReviews from './StarReviews';
 import ProductContext from '../../context/product/productContext';
 import SocialButtons from './SocialButtons';
 
-const ProductPurchasePanel = ({}) => {
+const ProductPurchasePanel = ({ productInfo }) => {
   const productContext = useContext(ProductContext);
+
   const {
     styleInfo: styles,
     currentStyleIdx,
     setCurrentStyleIdx,
-    productInfo,
   } = productContext;
 
   const {
     sale_price: salePrice,
     original_price: originalPrice,
   } = styles.results[currentStyleIdx];
-
   const isSale = Number(salePrice) > 0;
+  console.log({ styles });
 
   return (
     <Card className='ml-4 h-100 p-1 w-100' style={{ borderStyle: 'none' }}>

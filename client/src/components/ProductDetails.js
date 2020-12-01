@@ -9,12 +9,7 @@ import { useParams } from 'react-router-dom';
 const ProductDetails = () => {
   const { productId } = useParams();
   const productContext = useContext(ProductContext);
-  const {
-    setProductId,
-    getAllProductInfo,
-    productInfo,
-    images,
-  } = productContext;
+  const { setProductId, getAllProductInfo, productInfo } = productContext;
 
   useEffect(() => {
     getAllProductInfo(productId);
@@ -30,7 +25,7 @@ const ProductDetails = () => {
               <CarouselContainer />
             </Col>
             <Col>
-              <ProductPurchasePanel />
+              <ProductPurchasePanel productInfo={productInfo} />
             </Col>
           </Row>
           <Row>

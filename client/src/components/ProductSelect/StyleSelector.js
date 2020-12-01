@@ -26,7 +26,6 @@ const StyleSelector = ({ setCurrentStyleIdx, currentStyleIdx, styles }) => {
 
   let styleCounter = -1;
   const thumbnailArrays = makeStylesArrays(images);
-
   return (
     <Col className='w-100 mb-4'>
       <h6>
