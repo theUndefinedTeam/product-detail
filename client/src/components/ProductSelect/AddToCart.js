@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Form, Row, Button, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const AddToCart = ({ style }) => {
   const [currentSize, setCurrentSize] = useState(null);
@@ -104,7 +106,7 @@ const AddToCart = ({ style }) => {
             Add to Cart <i className='fas fa-plus ml-1' style={iconStyles}></i>
           </Button>
           <Button variant='secondary' size='sm' className='ml-1'>
-            <i className='fas fa-star' style={iconStyles}></i>
+            <FontAwesomeIcon icon={faStar} />
           </Button>
         </Row>
       </Form>
