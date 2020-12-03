@@ -18,7 +18,7 @@ const ProductInfo = () => {
         <p>{description}</p>
       </Col>
       <>
-        {features.length && (
+        {features.length ? (
           <Col>
             {features.map((item, i) => (
               <div key={i} className=''>
@@ -30,7 +30,7 @@ const ProductInfo = () => {
               </div>
             ))}
           </Col>
-        )}
+        ) : null}
       </>
     </Row>
   );

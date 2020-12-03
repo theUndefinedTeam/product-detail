@@ -19,7 +19,7 @@ const ProductState = (props) => {
     currentStyleIdx: 0,
     images: imageUrls,
     currentImage: 0,
-    productId: 2,
+    productId: 1,
   };
 
   const [state, dispatch] = useReducer(productReducer, initialState);

@@ -12,6 +12,7 @@ const AddToCart = ({ style }) => {
   const [selectedQty, setSelectedQty] = useState(0);
   const [cart, setCart] = useState(null);
   const [showMessage, setShowMessage] = useState(false);
+
   const selectSizeRef = useRef(null);
   const { productId } = useParams();
 
@@ -50,7 +51,7 @@ const AddToCart = ({ style }) => {
     <>
       <Form>
         {showMessage && (
-          <Alert variant='info' className='w-50 ml-2'>
+          <Alert variant='warning' className='w-50 ml-2'>
             Select a size!
           </Alert>
         )}
@@ -99,13 +100,10 @@ const AddToCart = ({ style }) => {
           </Form.Control>
         </Row>
         <Row className='ml-2 mt-1'>
-          <Button
-            variant='secondary'
-            onClick={() => handleAddClick()}
-            size='sm'>
+          <Button variant='info' onClick={() => handleAddClick()}>
             Add to Cart <i className='fas fa-plus ml-1' style={iconStyles}></i>
           </Button>
-          <Button variant='secondary' size='sm' className='ml-1'>
+          <Button variant='outline-info' size='sm' className='ml-1'>
             <FontAwesomeIcon icon={faStar} />
           </Button>
         </Row>

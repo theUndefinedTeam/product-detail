@@ -5,6 +5,7 @@ import ProductDetails from './ProductDetails';
 import NotFound from './NotFound';
 import ProductState from '../context/product/productState';
 import Navbar from './Navbar';
+
 const App = () => (
   <ProductState>
     <HashRouter>

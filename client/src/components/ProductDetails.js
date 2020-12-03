@@ -5,14 +5,15 @@ import ProductPurchasePanel from './ProductSelect/ProductPurchasePanel';
 import ProductInfo from './ProductInfo/ProductInfo';
 import ProductContext from '../context/product/productContext';
 import { useParams } from 'react-router-dom';
-import Navbar from './Navbar';
+
 const ProductDetails = () => {
   const { productId } = useParams();
   const productContext = useContext(ProductContext);
   const { setProductId, getAllProductInfo, productInfo } = productContext;
+
   useEffect(() => {
-    getAllProductInfo(productId);
     setProductId(productId);
+    getAllProductInfo(productId);
   }, [productId]);
 
   return (
@@ -28,9 +29,7 @@ const ProductDetails = () => {
             </Col>
           </Row>
           <Row>
-            <Col md={8}>
-              <ProductInfo />
-            </Col>
+            <ProductInfo />
           </Row>
         </Col>
       )}

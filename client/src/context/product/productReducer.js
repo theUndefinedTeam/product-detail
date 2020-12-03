@@ -11,13 +11,14 @@ export default (state, action) => {
 
   switch (type) {
     case SET_PRODUCT_ID:
-      // console.log('setting product id', { payload });
+      console.log('setting product id', { payload });
       return {
         ...state,
         productId: payload,
       };
     case GET_PRODUCT_INFO:
       document.title = payload[0].data.name;
+      console.log(payload[0].data)
       return {
         ...state,
         productInfo: payload[0].data,
