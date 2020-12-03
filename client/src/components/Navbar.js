@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { Navbar, Button, FormControl, Form, Nav } from 'react-bootstrap';
 import ProductContext from '../context/product/productContext';
+import ShoppingCart from './ShoppingCart';
+
 const NavBar = () => {
   const [location, setLocation] = useState('');
   const productContext = useContext(ProductContext);
@@ -12,6 +14,7 @@ const NavBar = () => {
       setProductId(location);
       window.location.href = `${window.location.origin}/#/${location}`;
     }
+    setLocation('');
   };
   return (
     <Navbar bg='info' variant='dark'>
@@ -26,6 +29,7 @@ const NavBar = () => {
           type='text'
           placeholder='Search'
           className='mr-2'
+          value={location}
           onChange={(e) => setLocation(e.target.value)}
         />
         <Button
@@ -34,6 +38,7 @@ const NavBar = () => {
           className='mr-4'>
           Search
         </Button>
+        <ShoppingCart />
       </Form>
     </Navbar>
   );

@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Row, Button, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import ProductContext from '../../context/product/productContext';
 
 const AddToCart = ({ style }) => {
   const [currentSize, setCurrentSize] = useState(null);
@@ -15,6 +16,7 @@ const AddToCart = ({ style }) => {
 
   const selectSizeRef = useRef(null);
   const { productId } = useParams();
+  const { addToCart } = useContext(ProductContext);
 
   useEffect(() => {
     currentSize !== null && setShowMessage(false);
@@ -23,28 +25,29 @@ const AddToCart = ({ style }) => {
   const handleAddClick = () => {
     if (currentSize === null) {
       setShowMessage(true);
-    }
-    axios
-      .post(' http://52.26.193.201:3000/cart/', {
-        product_id: Number(productId),
-        user_session: 300,
-      })
-      .then((res) => console.log(res.data))
-      .catch((err) =>
-        console.error('ERROR @ handleAddClick AddToCart.js', err.message)
-      );
+    } else {
+      axios
+        .post(' http://52.26.193.201:3000/cart/', {
+          product_id: Number(productId),
+          user_session: 300,
+        })
+        .then((res) => res)
+        .catch((err) =>
+          console.error('ERROR @ handleAddClick AddToCart.js', err.message)
+        );
 
-    setCart({
-      ...cart,
-      item: {
+      addToCart({
+        price: style.sale_price > 0 ? style.sale_price : style.original_price,
         product_id: Number(productId),
         style_id: style.style_id,
         sku: currentSize,
         qty: selectedQty,
-      },
-    });
-    selectSizeRef.current.selected = true;
-    setCurrentSize(null);
+        styleName: style.name,
+      });
+
+      selectSizeRef.current.selected = true;
+      setCurrentSize(null);
+    }
   };
 
   return (

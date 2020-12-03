@@ -3,3 +3,4 @@ export const PRODUCT_ERROR = 'PRODUCT_ERROR';
 export const SET_PRODUCT_ID = 'SET_PRODUCT_ID';
 export const SET_CURRENT_IMAGE = 'SET_CURRENT_IMAGE';
 export const SET_CURRENT_STYLE_IDX = 'SET_CURRENT_STYLE_IDX';
+export const ADD_TO_CART = 'ADD_TO_CART';

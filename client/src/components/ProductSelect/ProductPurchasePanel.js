@@ -20,7 +20,6 @@ const ProductPurchasePanel = ({ productInfo }) => {
     original_price: originalPrice,
   } = styles.results[currentStyleIdx];
   const isSale = Number(salePrice) > 0;
-  console.log({ styles });
 
   return (
     <Card className='ml-4 h-100 p-1 w-100' style={{ borderStyle: 'none' }}>

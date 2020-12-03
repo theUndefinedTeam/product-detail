@@ -8,6 +8,7 @@ import {
   SET_PRODUCT_ID,
   SET_CURRENT_IMAGE,
   SET_CURRENT_STYLE_IDX,
+  ADD_TO_CART,
 } from '../types';
 import axios from 'axios';
 
@@ -20,6 +21,7 @@ const ProductState = (props) => {
     images: imageUrls,
     currentImage: 0,
     productId: 1,
+    shoppingCart: [],
   };
 
   const [state, dispatch] = useReducer(productReducer, initialState);
@@ -45,7 +47,12 @@ const ProductState = (props) => {
       });
     }
   };
-
+  const addToCart = (item) => {
+    dispatch({
+      type: ADD_TO_CART,
+      payload: item,
+    });
+  };
   const setProductId = (id) => {
     dispatch({
       type: SET_PRODUCT_ID,
@@ -77,6 +84,8 @@ const ProductState = (props) => {
         images: state.images,
         currentImage: state.currentImage,
         productId: state.productId,
+        shoppingCart: state.shoppingCart,
+        addToCart,
         setCurrentStyleIdx,
         setCurrentImage,
         setProductId,
