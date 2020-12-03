@@ -18,7 +18,6 @@ const ShoppingCart = (props) => {
         return (acc += Number(item.price) * Number(item.qty));
       }, 0);
     setCartTotal(total);
-    console.log(total);
   }, [shoppingCart]);
 
   const handleClose = () => setShow(false);
