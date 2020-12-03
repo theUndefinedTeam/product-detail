@@ -4,7 +4,7 @@ import { Form, Row, Button, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faPlus } from '@fortawesome/free-solid-svg-icons';
 import ProductContext from '../../context/product/productContext';
 
 const AddToCart = ({ style }) => {
@@ -61,7 +61,6 @@ const AddToCart = ({ style }) => {
         <Row className='w-75 ml-2 mb-1'>
           <Form.Control
             as='select'
-            size='sm'
             className='mb-2'
             onChange={(e) => {
               setCurrentSize(e.target.value);
@@ -84,7 +83,6 @@ const AddToCart = ({ style }) => {
           </Form.Control>
           <Form.Control
             as='select'
-            size='sm'
             className='w-25 ml-1'
             value={selectedQty}
             onChange={(e) => setSelectedQty(Number(e.target.value))}>
@@ -104,7 +102,7 @@ const AddToCart = ({ style }) => {
         </Row>
         <Row className='ml-2 mt-1'>
           <Button variant='info' onClick={() => handleAddClick()}>
-            Add to Cart <i className='fas fa-plus ml-1' style={iconStyles}></i>
+            Add to Cart <FontAwesomeIcon icon={faPlus} className='ml-2' />
           </Button>
           <Button variant='outline-info' size='sm' className='ml-1'>
             <FontAwesomeIcon icon={faStar} />
