@@ -78,6 +78,7 @@ const thumbnailGalleryStyles = {
   height: '80px',
   position: 'relative',
   marginTop: '-80px',
+  marginLeft: '-80px',
   display: 'flex',
   alignContent: 'space-between',
   alignItems: 'center',

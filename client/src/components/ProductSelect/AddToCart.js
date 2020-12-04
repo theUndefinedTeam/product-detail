@@ -1,8 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Row, Button, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar, faPlus } from '@fortawesome/free-solid-svg-icons';
+import ProductContext from '../../context/product/productContext';
 
 const AddToCart = ({ style }) => {
   const [currentSize, setCurrentSize] = useState(null);
@@ -10,8 +13,10 @@ const AddToCart = ({ style }) => {
   const [selectedQty, setSelectedQty] = useState(0);
   const [cart, setCart] = useState(null);
   const [showMessage, setShowMessage] = useState(false);
+
   const selectSizeRef = useRef(null);
   const { productId } = useParams();
+  const { addToCart } = useContext(ProductContext);
 
   useEffect(() => {
     currentSize !== null && setShowMessage(false);
@@ -20,42 +25,42 @@ const AddToCart = ({ style }) => {
   const handleAddClick = () => {
     if (currentSize === null) {
       setShowMessage(true);
-    }
-    axios
-      .post(' http://52.26.193.201:3000/cart/', {
-        product_id: Number(productId),
-        user_session: 300,
-      })
-      .then((res) => console.log(res.data))
-      .catch((err) =>
-        console.error('ERROR @ handleAddClick AddToCart.js', err.message)
-      );
+    } else {
+      axios
+        .post(' http://52.26.193.201:3000/cart/', {
+          product_id: Number(productId),
+          user_session: 300,
+        })
+        .then((res) => res)
+        .catch((err) =>
+          console.error('ERROR @ handleAddClick AddToCart.js', err.message)
+        );
 
-    setCart({
-      ...cart,
-      item: {
+      addToCart({
+        price: style.sale_price > 0 ? style.sale_price : style.original_price,
         product_id: Number(productId),
         style_id: style.style_id,
         sku: currentSize,
         qty: selectedQty,
-      },
-    });
-    selectSizeRef.current.selected = true;
-    setCurrentSize(null);
+        styleName: style.name,
+      });
+
+      selectSizeRef.current.selected = true;
+      setCurrentSize(null);
+    }
   };
 
   return (
     <>
       <Form>
         {showMessage && (
-          <Alert variant='info' className='w-50 ml-2'>
+          <Alert variant='warning' className='w-50 ml-2'>
             Select a size!
           </Alert>
         )}
         <Row className='w-75 ml-2 mb-1'>
           <Form.Control
             as='select'
-            size='sm'
             className='mb-2'
             onChange={(e) => {
               setCurrentSize(e.target.value);
@@ -78,7 +83,6 @@ const AddToCart = ({ style }) => {
           </Form.Control>
           <Form.Control
             as='select'
-            size='sm'
             className='w-25 ml-1'
             value={selectedQty}
             onChange={(e) => setSelectedQty(Number(e.target.value))}>
@@ -97,14 +101,11 @@ const AddToCart = ({ style }) => {
           </Form.Control>
         </Row>
         <Row className='ml-2 mt-1'>
-          <Button
-            variant='secondary'
-            onClick={() => handleAddClick()}
-            size='sm'>
-            Add to Cart <i className='fas fa-plus ml-1' style={iconStyles}></i>
+          <Button variant='info' onClick={() => handleAddClick()}>
+            Add to Cart <FontAwesomeIcon icon={faPlus} className='ml-2' />
           </Button>
-          <Button variant='secondary' size='sm' className='ml-1'>
-            <i className='fas fa-star' style={iconStyles}></i>
+          <Button variant='outline-info' size='sm' className='ml-1'>
+            <FontAwesomeIcon icon={faStar} />
           </Button>
         </Row>
       </Form>

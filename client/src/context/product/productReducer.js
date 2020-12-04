@@ -4,6 +4,7 @@ import {
   GET_PRODUCT_INFO,
   SET_CURRENT_IMAGE,
   SET_CURRENT_STYLE_IDX,
+  ADD_TO_CART,
 } from '../types';
 
 export default (state, action) => {
@@ -11,7 +12,6 @@ export default (state, action) => {
 
   switch (type) {
     case SET_PRODUCT_ID:
-      // console.log('setting product id', { payload });
       return {
         ...state,
         productId: payload,
@@ -37,6 +37,12 @@ export default (state, action) => {
       };
     case PRODUCT_ERROR:
       console.error('PRODUCT ERROR', payload);
+    case ADD_TO_CART:
+      payload.name = state.productInfo.name;
+      return {
+        ...state,
+        shoppingCart: [...state.shoppingCart, payload],
+      };
     default:
       return state;
   }

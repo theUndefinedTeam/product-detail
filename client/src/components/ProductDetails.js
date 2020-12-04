@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import CarouselContainer from './Gallery/CarouselContainer';
 import ProductPurchasePanel from './ProductSelect/ProductPurchasePanel';
 import ProductInfo from './ProductInfo/ProductInfo';
@@ -12,8 +12,8 @@ const ProductDetails = () => {
   const { setProductId, getAllProductInfo, productInfo } = productContext;
 
   useEffect(() => {
-    getAllProductInfo(productId);
     setProductId(productId);
+    getAllProductInfo(productId);
   }, [productId]);
 
   return (
@@ -29,9 +29,7 @@ const ProductDetails = () => {
             </Col>
           </Row>
           <Row>
-            <Col md={8}>
-              <ProductInfo />
-            </Col>
+            <ProductInfo />
           </Row>
         </Col>
       )}
