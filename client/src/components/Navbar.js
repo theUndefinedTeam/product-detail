@@ -50,7 +50,10 @@ const NavBar = () => {
         />
         <Button
           variant='outline-light'
-          onClick={(e) => searchProduct(e)}
+          onClick={(e) => {
+            e.preventDefault;
+            searchProduct(e);
+          }}
           className='mr-4'>
           Search
         </Button>

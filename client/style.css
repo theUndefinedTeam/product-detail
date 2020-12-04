@@ -26,14 +26,6 @@
 .full-stars:before {
   -webkit-text-stroke: 1px rgba(0, 0, 0, 0.1);
 }
-/* Webkit-text-stroke is not supported on firefox or IE */
-
-/* Firefox */
-@-moz-document url-prefix() {
-  .full-stars {
-    color: #ecbe24;
-  }
-}
 
 /*******   CUSTOM CAROUSEL   *******/
 .carousel {
