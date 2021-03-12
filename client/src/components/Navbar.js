@@ -14,11 +14,6 @@ const NavBar = () => {
     e.preventDefault;
 
     const newProduct = products.find((item) => item.name.includes(searchTerm));
-    console.log(newProduct.id);
-    // if (typeof Number(location) !== NaN) {
-    //   setProductId(location);
-    //   window.location.href = `${window.location.origin}/#/${location}`;
-    // }
     if (newProduct.id) {
       setProductId(newProduct.id);
       console.log(newProduct.id);
