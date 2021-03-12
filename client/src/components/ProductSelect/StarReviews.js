@@ -5,7 +5,6 @@ const StarReviews = () => {
   const [fillPct, setFillPct] = useState(0);
 
   const productContext = useContext(ProductContext);
-
   const {
     reviewMeta,
     reviewMeta: { ratings },
@@ -13,6 +12,7 @@ const StarReviews = () => {
 
   useEffect(() => {
     if (!Object.values(ratings).length) return;
+
     const totalPossibleStars =
       Object.values(ratings).reduce((acc, num) => (acc += num)) * 5;
 
@@ -26,6 +26,7 @@ const StarReviews = () => {
     );
     setFillPct(`${pctInteger}%`);
   }, [ratings, reviewMeta]);
+
   return (
     <div className='d-inline-flex ml-3'>
       <span className='ratings'>
@@ -35,7 +36,6 @@ const StarReviews = () => {
       <a
         href='/#/1'
         style={{
-          // color: 'grey',
           textDecoration: 'underline',
           fontSize: '12px',
           verticalAlign: 'middle',
