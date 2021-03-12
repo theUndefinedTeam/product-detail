@@ -17,7 +17,7 @@ const StarReviews = () => {
       Object.values(ratings).reduce((acc, num) => (acc += num)) * 5;
 
     const totalStarsReceived = Object.entries(ratings).reduce((acc, entry) => {
-      acc += Number(entry[0]) * Number(entry[1]);
+      acc += parseInt(entry[0]) * parseInt(entry[1]);
       return acc;
     }, 0);
     const pctInteger = parseInt(
